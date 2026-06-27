@@ -234,8 +234,87 @@
         .section-separator .decorator { width: 120px; height: 4px; background: #ffffff; margin: 25px auto 0 auto; }
 
         .title-slide { justify-content: center; align-items: center; text-align: center; }
-        .title-slide h1 { font-size: 64px; margin-bottom: 10px; }
-        .title-slide .decorator { width: 80px; height: 4px; background: #b8925e; margin: 25px auto; }
+        .title-slide h1 {
+            font-size: 58px;
+            line-height: 1.08;
+            margin-bottom: 8px;
+            max-width: 900px;
+        }
+        .title-slide .decorator { width: 200px; height: 5px; background: #b8925e; margin: 8px auto 14px auto; }
+        .title-subtitle {
+            font-size: 24px;
+            color: #7c8daa;
+            font-weight: 300;
+            margin: 0 0 28px 0;
+        }
+        .title-meta {
+            margin-top: 8px;
+            line-height: 1.35;
+        }
+        .title-meta strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 23px;
+            color: #18233d;
+        }
+        .title-meta span {
+            font-size: 15px;
+            color: #7c8daa;
+        }
+        .index-slide {
+            padding: 34px 46px 40px 46px;
+        }
+        .index-header {
+            margin-bottom: 34px;
+        }
+        .index-header h2 {
+            font-size: 56px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .index-rule {
+            width: 100%;
+            height: 5px;
+            background: #b8925e;
+        }
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 46px 48px;
+            align-content: start;
+        }
+        .index-group-title {
+            display: block;
+            background: #f4f7fb;
+            color: #b8925e;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 4px;
+            padding: 6px 12px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        .index-group-title:hover {
+            background: #e9eef6;
+        }
+        .index-group ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .index-group li {
+            margin: 0 0 8px 0;
+            color: #3f4d67;
+            font-size: 17px;
+        }
+        .index-group a {
+            color: #3f4d67;
+            text-decoration: none;
+        }
+        .index-group a:hover {
+            color: #18233d;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -243,22 +322,86 @@
 <!-- BARRA DE NAVEGACIÓN FLOTANTE -->
 <div class="navigation-bar">
     <a href="#slide-inicio" class="nav-btn">Inicio</a>
+    <a href="#slide-indice" class="nav-btn">Indice</a>
     <a href="#bloque-1" class="nav-btn">01. Política</a>
     <a href="#bloque-2" class="nav-btn">02. Clásicas</a>
     <a href="#bloque-3" class="nav-btn">03. Familia</a>
     <a href="#bloque-4" class="nav-btn">04. Amigos</a>
     <a href="#bloque-5" class="nav-btn">05. Trabajo</a>
-    <a href="#slide-cierre" class="nav-btn">Cierre</a>
+    <a href="#slide-cierre" class="nav-btn">06. Cierre</a>
 </div>
 
 <div class="portfolio-wrapper">
 
     <!-- PORTADA -->
     <div class="slide-container title-slide" id="slide-inicio">
-        <h1>PORTAFOLIO DE EVIDENCIAS</h1>
-        <p style="font-size: 24px; color: #64748b; font-weight: 300; text-transform: uppercase; letter-spacing: 3px;">Análisis Crítico de Narrativas Audiovisuales</p>
+        <h1>PORTAFOLIO DE EVIDENCIAS &#8226;<br>PRIMER PARCIAL</h1>
         <div class="decorator"></div>
-        <p style="font-weight: 600; color: #0f172a; letter-spacing: 1px; font-size: 14px;">LICENCIATURA EN COMUNICACIÓN • ESTUDIOS DE TELEVISIÓN 2026</p>
+        <p class="title-subtitle">Antecedentes y desarrollo de las series audiovisuales</p>
+        <div class="title-meta">
+            <strong>EDUARDO OCHOA ROSAS</strong>
+            <span>ID: 00503721</span>
+        </div>
+    </div>
+
+    <!-- INDICE GENERAL -->
+    <div class="slide-container index-slide" id="slide-indice">
+        <div class="index-header">
+            <h2>ÍNDICE GENERAL</h2>
+            <div class="index-rule"></div>
+        </div>
+        <div class="index-grid">
+            <div class="index-group">
+                <a class="index-group-title" href="#bloque-1">01. Apertura: Política y Poder</a>
+                <ul>
+                    <li><a href="#slide-01">The West Wing</a></li>
+                    <li><a href="#slide-02">House of Cards</a></li>
+                    <li><a href="#slide-03">It&#8217;s All Her Fault</a></li>
+                    <li><a href="#slide-04">The Newsroom</a></li>
+                </ul>
+            </div>
+            <div class="index-group">
+                <a class="index-group-title" href="#bloque-2">02. Series Clásicas</a>
+                <ul>
+                    <li><a href="#slide-05">I Love Lucy</a></li>
+                    <li><a href="#slide-06">The Dick Van Dyke Show</a></li>
+                    <li><a href="#slide-07">The Untouchables</a></li>
+                    <li><a href="#slide-08">The Twilight Zone</a></li>
+                </ul>
+            </div>
+            <div class="index-group">
+                <a class="index-group-title" href="#bloque-3">03. Familia</a>
+                <ul>
+                    <li><a href="#slide-09">Friends</a></li>
+                    <li><a href="#slide-10">Modern Family</a></li>
+                    <li><a href="#slide-11">This Is Us</a></li>
+                    <li><a href="#slide-12">Malcolm in the Middle</a></li>
+                    <li><a href="#slide-13">Married... with Children</a></li>
+                    <li><a href="#slide-14">Arrested Development</a></li>
+                    <li><a href="#slide-15">Bluey</a></li>
+                </ul>
+            </div>
+            <div class="index-group">
+                <a class="index-group-title" href="#bloque-4">04. Amigos</a>
+                <ul>
+                    <li><a href="#slide-16">Ted Lasso: Rainbow</a></li>
+                    <li><a href="#slide-17">Ted Lasso: Sunflowers</a></li>
+                </ul>
+            </div>
+            <div class="index-group">
+                <a class="index-group-title" href="#bloque-5">05. Trabajo</a>
+                <ul>
+                    <li><a href="#slide-18">ER (Urgencias)</a></li>
+                    <li><a href="#slide-19">The Pitt</a></li>
+                </ul>
+            </div>
+            <div class="index-group">
+                <a class="index-group-title" href="#slide-cierre">06. Reflexión final</a>
+                <ul>
+                    <li><a href="#slide-cierre">Reflexión y conclusiones</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- SEPARADOR BLOQUE 1 -->
@@ -270,7 +413,7 @@
     </div>
 
     <!-- EVIDENCIA 01: THE WEST WING -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-01">
         <h2 class="slide-title">The West Wing <span>Evidencia 01</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -322,7 +465,7 @@
     </div>
 
     <!-- EVIDENCIA 02: HOUSE OF CARDS -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-02">
         <h2 class="slide-title">House of Cards <span>Evidencia 02</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -374,7 +517,7 @@
     </div>
 
     <!-- EVIDENCIA 03: IT'S ALL HER FAULT -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-03">
         <h2 class="slide-title">It's All Her Fault <span>Evidencia 03</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -426,7 +569,7 @@
     </div>
 
     <!-- EVIDENCIA 04: THE NEWSROOM -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-04">
         <h2 class="slide-title">The Newsroom <span>Evidencia 04</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -486,7 +629,7 @@
     </div>
 
     <!-- EVIDENCIA 05: I LOVE LUCY -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-05">
         <h2 class="slide-title">I Love Lucy <span>Evidencia 05</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -538,7 +681,7 @@
     </div>
 
     <!-- EVIDENCIA 06: THE DICK VAN DYKE SHOW -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-06">
         <h2 class="slide-title">The Dick Van Dyke Show <span>Evidencia 06</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -590,7 +733,7 @@
     </div>
 
     <!-- EVIDENCIA 07: THE UNTOUCHABLES -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-07">
         <h2 class="slide-title">The Untouchables <span>Evidencia 07</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -642,7 +785,7 @@
     </div>
 
     <!-- EVIDENCIA 08: THE TWILIGHT ZONE -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-08">
         <h2 class="slide-title">The Twilight Zone <span>Evidencia 08</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -702,7 +845,7 @@
     </div>
 
     <!-- EVIDENCIA 09: FRIENDS -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-09">
         <h2 class="slide-title">Friends <span>Evidencia 09</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -754,7 +897,7 @@
     </div>
 
     <!-- EVIDENCIA 10: MODERN FAMILY -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-10">
         <h2 class="slide-title">Modern Family <span>Evidencia 10</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -806,7 +949,7 @@
     </div>
 
     <!-- EVIDENCIA 11: THIS IS US -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-11">
         <h2 class="slide-title">This Is Us <span>Evidencia 11</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -858,7 +1001,7 @@
     </div>
 
     <!-- EVIDENCIA 12: MALCOLM IN THE MIDDLE -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-12">
         <h2 class="slide-title">Malcolm in the Middle <span>Evidencia 12</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -910,7 +1053,7 @@
     </div>
 
     <!-- EVIDENCIA 13: MARRIED... WITH CHILDREN -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-13">
         <h2 class="slide-title">Married... with Children <span>Evidencia 13</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -962,7 +1105,7 @@
     </div>
 
     <!-- EVIDENCIA 14: ARRESTED DEVELOPMENT -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-14">
         <h2 class="slide-title">Arrested Development <span>Evidencia 14</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -1014,7 +1157,7 @@
     </div>
 
     <!-- EVIDENCIA 15: BLUEY -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-15">
         <h2 class="slide-title">Bluey <span>Evidencia 15</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -1074,7 +1217,7 @@
     </div>
 
     <!-- EVIDENCIA 16: TED LASSO - RAINBOW -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-16">
         <h2 class="slide-title">Ted Lasso: Rainbow <span>Evidencia 16</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -1126,7 +1269,7 @@
     </div>
 
     <!-- EVIDENCIA 17: TED LASSO - SUNFLOWERS -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-17">
         <h2 class="slide-title">Ted Lasso: Sunflowers <span>Evidencia 17</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -1186,7 +1329,7 @@
     </div>
 
     <!-- EVIDENCIA 18: ER -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-18">
         <h2 class="slide-title">ER <span>Evidencia 18</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
@@ -1238,7 +1381,7 @@
     </div>
 
     <!-- EVIDENCIA 19: THE PITT -->
-    <div class="slide-container">
+    <div class="slide-container" id="slide-19">
         <h2 class="slide-title">The Pitt <span>Evidencia 19</span></h2>
         <div class="series-layout">
             <div class="analysis-column">
