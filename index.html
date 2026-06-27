@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Universitario - Evidencias Audiovisuales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@300;400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURACIÓN Y TOKENS DE DISEÑO */
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* CONTENEDOR MULTI-SLIDE VERTICAL CON SCROLL-SNAP */
+        .portfolio-wrapper {
+            width: 100%;
+            max-width: 1280px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 40px 0 100px 0;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 50px;
+            border-radius: 8px;
+            color: #1e293b;
+            scroll-margin-top: 20px;
+        }
+
+        .slide-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 50%, #b8925e 100%);
+        }
+
+        /* NAVEGACIÓN FLOTANTE (BOTTOM BAR) */
+        .navigation-bar {
+            position: fixed;
+            bottom: 25px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-btn {
+            color: #94a3b8;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            color: #ffffff;
+            background-color: #b8925e;
+        }
+
+        /* ELEMENTOS TIPOGRÁFICOS */
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; margin: 0; color: #0f172a; }
+        .slide-title { 
+            font-size: 28px; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid #e2e8f0; 
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide-title span {
+            font-size: 12px;
+            color: #b8925e;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* GRID ESTRUCTURAL INTERNO */
+        .series-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 25px;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .analysis-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        /* Ficha Técnica */
+        .ficha-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 18px;
+        }
+        .ficha-box table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .ficha-box th { text-align: left; color: #b8925e; font-weight: 700; width: 30%; padding: 3px 0; font-size: 10px; text-transform: uppercase; }
+        .ficha-box td { color: #1e293b; padding: 3px 0; border-bottom: 1px solid #f1f5f9; }
+
+        /* Matriz de 6 Cuadros */
+        .analysis-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 160px);
+            gap: 12px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .analysis-matrix::-webkit-scrollbar { width: 4px; }
+        .analysis-matrix::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        .cuadro-analitico {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-top: 3px solid #0f172a;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .cuadro-analitico h4 {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b8925e;
+            margin: 0 0 4px 0;
+        }
+        .cuadro-analitico p { 
+            font-size: 11px; 
+            line-height: 1.35; 
+            color: #334155; 
+            margin: 0; 
+            text-align: justify; 
+            overflow-y: auto;
+        }
+        .cuadro-analitico p::-webkit-scrollbar { width: 2px; }
+        .cuadro-analitico p::-webkit-scrollbar-thumb { background: #cbd5e1; }
+
+        /* Columna de Evidencia Visual */
+        .visual-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .image-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            background-color: #0f172a;
+        }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .fallback-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: rgba(255, 255, 255, 0.4);
+            gap: 10px;
+        }
+        .fallback-img i { font-size: 32px; color: #b8925e; }
+        .fallback-img span { font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+        .image-caption { font-size: 11px; font-style: italic; color: #64748b; text-align: center; line-height: 1.3; }
+
+        .apa-footer {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            line-height: 1.3;
+        }
+        .apa-footer strong { color: #b8925e; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 8px; }
+
+        /* SEPARADORES DE BLOQUE */
+        .section-separator {
+            background-color: #0f172a;
+            color: #ffffff;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .section-separator h2 { color: #b8925e; font-size: 54px; margin-bottom: 10px; }
+        .section-separator p { color: #94a3b8; font-size: 20px; margin: 0; font-weight: 300; }
+        .section-separator .decorator { width: 120px; height: 4px; background: #ffffff; margin: 25px auto 0 auto; }
+
+        .title-slide { justify-content: center; align-items: center; text-align: center; }
+        .title-slide h1 { font-size: 64px; margin-bottom: 10px; }
+        .title-slide .decorator { width: 80px; height: 4px; background: #b8925e; margin: 25px auto; }
+    </style>
+</head>
+<body>
+
+<!-- BARRA DE NAVEGACIÓN FLOTANTE -->
+<div class="navigation-bar">
+    <a href="#slide-inicio" class="nav-btn">Inicio</a>
+    <a href="#bloque-1" class="nav-btn">01. Política</a>
+    <a href="#bloque-2" class="nav-btn">02. Clásicas</a>
+    <a href="#bloque-3" class="nav-btn">03. Familia</a>
+    <a href="#bloque-4" class="nav-btn">04. Amigos</a>
+    <a href="#bloque-5" class="nav-btn">05. Trabajo</a>
+    <a href="#slide-cierre" class="nav-btn">Cierre</a>
+</div>
+
+<div class="portfolio-wrapper">
+
+    <!-- PORTADA -->
+    <div class="slide-container title-slide" id="slide-inicio">
+        <h1>PORTAFOLIO DE EVIDENCIAS</h1>
+        <p style="font-size: 24px; color: #64748b; font-weight: 300; text-transform: uppercase; letter-spacing: 3px;">Análisis Crítico de Narrativas Audiovisuales</p>
+        <div class="decorator"></div>
+        <p style="font-weight: 600; color: #0f172a; letter-spacing: 1px; font-size: 14px;">LICENCIATURA EN COMUNICACIÓN • ESTUDIOS DE TELEVISIÓN 2026</p>
+    </div>
+
+    <!-- SEPARADOR BLOQUE 1 -->
+    <div class="slide-container section-separator" id="bloque-1">
+        <p style="font-size: 16px; letter-spacing: 4px;">SECCIÓN 01</p>
+        <h2>Política, poder y medios</h2>
+        <p>Análisis de la representación institucional, la veracidad y la ética del liderazgo público</p>
+        <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 01: THE WEST WING -->
+    <div class="slide-container">
+        <h2 class="slide-title">The West Wing <span>Evidencia 01</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>The Midterms (T2E03)</td><th>Año / País</th><td>2000 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Aaron Sorkin</td><th>Cadena / Plataforma</th><td>NBC / YouTube</td></tr>
+                        <tr><th>Género</th><td>Drama político</td><th>Duración aprox.</th><td>42 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Hito de la televisión de red de finales de los noventa. Relevancia: Elevó el diálogo sofisticado como motor dramático frente a la acción física tradicional en la TV abierta.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>El Pdte. Bartlet confronta a la doctora Jenna Jacobs por su uso selectivo y dogmático de la religión para sostener discursos discriminatorios homofóbicos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto moral y de jerarquía. Diálogos vertiginosos cargados de subtexto y datos duros. Puesta en escena: Bartlet de pie dominando físicamente la sala.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Temas Actuales.</strong> Aborda la colisión entre fe privada y moral del Estado. Se cruza secundariamente con el entorno del <i>Trabajo</i> corporativo del gobierno.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Televisión clásica de red. Muestra la sofisticación de la narrativa verbal de finales de siglo y la consolidación de la firma autoral del showrunner (Sorkin).</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un despliegue elocuente de poder moral. Bartlet demuestra que la inteligencia y la palabra son las armas políticas más potentes, idealizando la gobernanza norteamericana.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/1516118476414595565" alt="President Bartlet confrontation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-building-columns"></i><span>The West Wing</span></div>
+                </div>
+                <div class="image-caption">Bartlet confronta discursos dogmáticos utilizando la elocuencia y la autoridad presidencial.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Sorkin, A. (Escritor), & Graves, A. (Director). (2000, 18 de octubre). The Midterms (The West Wing, T2, E3) [Episodio]. NBC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 02: HOUSE OF CARDS -->
+    <div class="slide-container">
+        <h2 class="slide-title">House of Cards <span>Evidencia 02</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Chapter 7 (T1E07)</td><th>Año / País</th><td>2013 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Beau Willimon</td><th>Cadena / Plataforma</th><td>Netflix</td></tr>
+                        <tr><th>Género</th><td>Thriller político</td><th>Duración aprox.</th><td>50 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Consolidó la era del streaming en 2013. Hito clave para la producción original de alta gama y la popularización del consumo por maratón (*binge-watching*).</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>En una recepción política, Frank Underwood ejecuta movimientos tácticos para aislar y desplazar visualmente al Vicepresidente de las decisiones clave.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de pérdida de poder e influencia. Tono gélido e irónico. La puesta en escena utiliza la composición del encuadre para revelar las verdaderas jerarquías.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Temas Actuales / Trabajo.</strong> Centrada en la desmedida ambición de poder institucional y los sacrificios éticos asociados a la supervivencia gubernamental.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Ecosistema de streaming contemporáneo. Representa el tránsito de la emisión por parrilla lineal al consumo digital personalizado y sin censura de red.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Espectacular uso de la composición visual. El aislamiento político del vicepresidente se relata con silencios y encuadres, demostrando que la imagen supera a las palabras.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11625811516315724189" alt="House of Cards displacement" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-chess-knight"></i><span>House of Cards</span></div>
+                </div>
+                <div class="image-caption">La marginación del vicepresidente en pantalla retrata el desplazamiento silencioso del poder.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Barnow, K. (Escritora), & McDougall, C. (Director). (2013, 1 de febrero). Chapter 7 (House of Cards, T1, E7) [Episodio]. Netflix.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 03: IT'S ALL HER FAULT -->
+    <div class="slide-container">
+        <h2 class="slide-title">It's All Her Fault <span>Evidencia 03</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Episodio 1</td><th>Año / País</th><td>2025 / Estados Unidos - Australia</td></tr>
+                        <tr><th>Creador(es)</th><td>Megan Gallagher</td><th>Cadena / Plataforma</th><td>Peacock / Prime Video</td></tr>
+                        <tr><th>Género</th><td>Thriller de misterio</td><th>Duración aprox.</th><td>50 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Estreno del thriller contemporáneo en streaming (2025). Explora la paranoia y la culpa en la maternidad hipervigilada moderna dentro de entornos acomodados.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Marissa acude a recoger a su hijo a una casa acordada para una cita de juegos, topándose con una mujer que desconoce por completo la situación.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de misterio inmediato y supervivencia. Tono angustiante construido con planos de primer plano, silencios incómodos y música atmosférica opresiva.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Temas Actuales / Familia.</strong> Analiza la vulnerabilidad infantil y el juicio social sobre la maternidad. El núcleo es el lazo biológico protector.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Thriller contemporáneo de plataformas. Muestra el uso de recursos formales inmersivos y "ganchos" de tensión inmediata característicos del streaming.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Thriller tenso que convierte un miedo cotidiano en una pesadilla claustrofóbica. La culpa materna y la sospecha social se construyen con un ritmo de misterio implacable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/14075095682528875976" alt="It's All Her Fault tension" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-child-reaching"></i><span>It's All Her Fault</span></div>
+                </div>
+                <div class="image-caption">La confrontación inicial en la puerta rompe de golpe el pacto de tranquilidad cotidiana.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Gallagher, M. (Creadora). (2025). It's All Her Fault [Serie de televisión]. Universal International Studios; Peacock.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 04: THE NEWSROOM -->
+    <div class="slide-container">
+        <h2 class="slide-title">The Newsroom <span>Evidencia 04</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>We Just Decided To (T1E01)</td><th>Año / País</th><td>2012 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Aaron Sorkin</td><th>Cadena / Plataforma</th><td>HBO</td></tr>
+                        <tr><th>Género</th><td>Drama periodístico</td><th>Duración aprox.</th><td>60 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Televisión de cable de prestigio (HBO). Presenta una idealización del periodismo ético y veraz frente a la polarización mediática contemporánea.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Will McAvoy rompe su habitual neutralidad complaciente y explota en un foro universitario revelando datos crudos sobre la realidad de su país.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto entre la complacencia mediática y la honestidad profesional. Diálogos sumamente técnicos y precisos. Puesta en escena teatralizada y solemne.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo / Temas Actuales.</strong> El conflicto emana de la responsabilidad cívica y ética de la profesión informativa frente al público.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Televisión de prestigio y cable premium. Drama institucional sorkiniano que debate el rol de los medios en la conformación de la opinión pública.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Una ruptura frontal de la complacencia mediática. Es un inicio valiente que critica el chovinismo e introduce el periodismo ético como control de la verdad pública.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/15370769424578898929" alt="Will McAvoy outburst" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-microphone-lines"></i><span>The Newsroom</span></div>
+                </div>
+                <div class="image-caption">La honestidad descarnada de McAvoy opera como declaración de principios del periodismo.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Sorkin, A. (Escritor), & Mottola, G. (Director). (2012, 24 de junio). We Just Decided To (The Newsroom, T1, E1) [Episodio]. HBO.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEPARADOR BLOQUE 2 -->
+    <div class="slide-container section-separator" id="bloque-2">
+        <p style="font-size: 16px; letter-spacing: 4px;">SECCIÓN 02</p>
+        <h2>Series clásicas</h2>
+        <p>Los cimientos formales: la sitcom, el drama procesal criminal y las antologías de autor</p>
+        <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 05: I LOVE LUCY -->
+    <div class="slide-container">
+        <h2 class="slide-title">I Love Lucy <span>Evidencia 05</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>The Girls Want to Go...</td><th>Año / País</th><td>1951 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Jess Oppenheimer, et al.</td><th>Cadena / Plataforma</th><td>CBS</td></tr>
+                        <tr><th>Género</th><td>Sitcom Familiar</td><th>Duración aprox.</th><td>26 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>1951. Estandarizó el modelo de tres cámaras en cine frente al kinescopio directo, creando el modelo multicámara con público en vivo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Lucy y Ethel planifican ir a un club nocturno por su aniversario, mientras que Ricky y Fred prefieren ir a ver una pelea de box.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto doméstico fundacional. Estructura de comedia de situaciones basada en el enredo. Actuación altamente física (slapstick) y gesticulada.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> El conflicto nace y se resuelve dentro de los linderos del acuerdo matrimonial y los roles de género tradicionales.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Nacimiento de la Sitcom clásica de red. Define el uso de decorados de interior fijos y la comedia doméstica estructurada en 22 minutos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Más interesante por su valor histórico que por su humor actual. Destaca cómo un conflicto cotidiano como una salida de pareja construye un enredo de amistad y matrimonio. Es clave para entender el origen de las sitcoms que le sucedieron.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/7277039088922391226" alt="Lucy and Ethel negotiation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-tv"></i><span>I Love Lucy</span></div>
+                </div>
+                <div class="image-caption">Lucy y Ethel orquestando el engaño cómico que consolidaría el formato clásico de sitcom.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Oppenheimer, J., Pugh, M., & Carroll, B. (Escritores). (1951, 15 de octubre). The Girls Want to Go to a Nightclub (I Love Lucy, T1, E1) [Episodio]. CBS.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 06: THE DICK VAN DYKE SHOW -->
+    <div class="slide-container">
+        <h2 class="slide-title">The Dick Van Dyke Show <span>Evidencia 06</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>The Sick Boy and the Sitter</td><th>Año / País</th><td>1961 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Carl Reiner</td><th>Cadena / Plataforma</th><td>CBS</td></tr>
+                        <tr><th>Género</th><td>Sitcom Familiar / Laboral</td><th>Duración aprox.</th><td>25 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>1961. Renovó la comedia de situación al entrelazar el espacio del hogar moderno de los sesenta con la vida laboral de la escritura de televisión.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Rob y Laura dudan entre salir a un evento social o quedarse con su hijo Ritchie, quien asume estar enfermo con la niñera en casa.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de rol familiar (parentalidad frente a ocio). Tono más sofisticado y realista. Mayor soltura y fluidez verbal de los actores en escena.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> Plantea el dilema cotidiano y la culpabilidad de los padres suburbanos, retratando dinámicas matrimoniales más modernas.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Transición en la comedia de red. Muestra el desarrollo de personajes más humanos y el alejamiento progresivo del slapstick de los cincuenta.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Agradable y natural. Logra comedia desde un dilema cotidiano y creíble como la crianza y la culpa social, marcando la evolución formal del género en los sesenta.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/8845294233911252440" alt="Rob and Laura home" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-couch"></i><span>Dick Van Dyke Show</span></div>
+                </div>
+                <div class="image-caption">Laura y Rob encarnando la dinámica doméstica urbana de los sesenta.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Reiner, C. (Escritor), & Rich, J. (Director). (1961, 3 de octubre). The Sick Boy and the Sitter (The Dick Van Dyke Show, T1, E1) [Episodio]. CBS.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 07: THE UNTOUCHABLES -->
+    <div class="slide-container">
+        <h2 class="slide-title">The Untouchables <span>Evidencia 07</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>The Empty Chair (S1E01)</td><th>Año / País</th><td>1959 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Quinn Martin</td><th>Cadena / Plataforma</th><td>ABC</td></tr>
+                        <tr><th>Género</th><td>Drama policial</td><th>Duración aprox.</th><td>50 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>1959. Referente del drama procesal de acción. Introdujo de manera inédita la estética sobria, sombría y cruda del cine negro de gánsteres a la TV.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Tras la caída de Capone, Ness y su equipo de "intocables" buscan bloquear el encumbramiento violento de un nuevo jefe de la mafia de Chicago.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de moralidad y ley. Estructura procedimental seria con narrador de estilo documental. Puesta en escena de claroscuros y violencia velada.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo.</strong> Se enfoca en la ética, la integridad y el deber profesional de los agentes ante la corrupción sistemática del entorno.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Evolución del drama para audiencias maduras en la televisión clásica de red. Establece los cimientos del género policíaco televisivo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un drama policial serio, adulto y de gran atmósfera expresionista. Demuestra con sobriedad moral que la televisión clásica podía albergar relatos de crimen más complejos y cinematográficos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/15305436705705203122" alt="Untouchables investigation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-user-shield"></i><span>The Untouchables</span></div>
+                </div>
+                <div class="image-caption">La sobriedad expresionista de Eliot Ness y el realismo de la ley en pantalla.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Karp, D. (Guionista), & Nelson, R. (Director). (1959, 15 de octubre). The Empty Chair (The Untouchables, T1, E1) [Episodio]. ABC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 08: THE TWILIGHT ZONE -->
+    <div class="slide-container">
+        <h2 class="slide-title">The Twilight Zone <span>Evidencia 08</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Where Is Everybody? (S1E01)</td><th>Año / País</th><td>1959 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Rod Serling</td><th>Cadena / Plataforma</th><td>CBS</td></tr>
+                        <tr><th>Género</th><td>Antología / Suspense</td><th>Duración aprox.</th><td>25 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>1959. Serie pionera en usar la alegoría fantástico-científica para evadir la censura y discutir el miedo atómico y existencial de la Guerra Fría.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Un hombre amnésico vaga por un pueblo vacío; la privación sensorial y la total soledad desencadenan su colapso psicológico.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto psicológico absoluto del sujeto contra su propio aislamiento. Diálogos reducidos a monólogos. Puesta en escena claustrofóbica en exteriores desiertos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Temas Actuales.</strong> Aborda la angustia, el miedo existencial de posguerra, la soledad colectiva y la despersonalización del individuo moderno.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Formato de antología clásica. Representa la capacidad de la TV para construir relatos alegóricos, autoconclusivos y profundamente políticos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Brillante ejercicio de suspenso con recursos mínimos. Construye tensión desde el aislamiento y la soledad psicológica del individuo. Un clásico vigente que invita a seguir explorando antologías.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/8942157770540893157" alt="Twilight Zone desolation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-ghost"></i><span>The Twilight Zone</span></div>
+                </div>
+                <div class="image-caption">La vacuidad de las calles del pueblo comunica de manera directa el vacío mental del sujeto.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Serling, R. (Escritor), & Stevens, R. (Director). (1959, 2 de octubre). Where Is Everybody? (The Twilight Zone, T1, E1) [Episodio]. CBS.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEPARADOR BLOQUE 3 -->
+    <div class="slide-container section-separator" id="bloque-3">
+        <p style="font-size: 16px; letter-spacing: 4px;">SECCIÓN 03</p>
+        <h2>Familia</h2>
+        <p>De la sitcom al drama: la representación del hogar, los estilos parentales y la disfunción como motor dramático</p>
+        <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 09: FRIENDS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Friends <span>Evidencia 09</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>The One Where Ross Got High</td><th>Año / País</th><td>1999 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>David Crane, Marta Kauffman</td><th>Cadena / Plataforma</th><td>NBC</td></tr>
+                        <tr><th>Género</th><td>Sitcom</td><th>Duración aprox.</th><td>22 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Icono indiscutible de finales de los noventa. Hito en consolidar el paradigma de la "familia elegida" de pares urbanos en la TV comercial.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>En el Día de Acción de Gracias, la acumulación cómica de mentiras cruzadas de Ross, Monica y Chandler estalla frente a los padres Geller.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de secretos familiares en comedia de enredo. Diálogos rápidos y coreografiados. Puesta en escena teatralizada en un único interior.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Amigos / Familia.</strong> Los pares asumen el soporte afectivo mutuo ante los conflictos de origen familiar directo de los miembros.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Sitcom multicámara de la televisión clásica tardía. Representa la cumbre comercial del formato previo a la desfragmentación digital.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Una obra maestra del ritmo cómico. El conflicto de Acción de Gracias funciona por la perfecta definición de sus personajes, construyendo la familia elegida con maestría teatral.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6687342278511868211" alt="Friends Thanksgiving" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-turkey"></i><span>Friends</span></div>
+                </div>
+                <div class="image-caption">La cena de Thanksgiving opera como espacio de desahogo cómico coral.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Bright, K. S. (Director). (1999, 25 de noviembre). The One Where Ross Got High (Friends, T6, E9) [Episodio]. NBC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 10: MODERN FAMILY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Modern Family <span>Evidencia 10</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Connection Lost (T6E16)</td><th>Año / País</th><td>2015 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Christopher Lloyd, Steven Levitan</td><th>Cadena / Plataforma</th><td>ABC</td></tr>
+                        <tr><th>Género</th><td>Sitcom (Falso documental)</td><th>Duración aprox.</th><td>22 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2015. Hito que actualizó la comedia de situaciones uniendo el formato de falso documental de cámara única con la vida tecnológica.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Todo el relato se traslada al escritorio de la Mac de Claire, quien intenta desesperadamente localizar a Haley mediante videollamadas y redes.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de desencuentro tecnológico. Estructura experimental interactiva. Recursos visuales de interfaces digitales (Screenlife).</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> El lazo afectivo materno-filial impulsa el desorden, evidenciando los miedos parentales y el control a distancia.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Innovación formal de la Sitcom moderna. Hibridación genérica del falso documental y la narrativa transmedia digital.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Brillante y experimental. Trasladar la narrativa al plano digital de una laptop retrata con humor cómo la tecnología de red media y complica la comunicación familiar actual.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/12110965671280233975" alt="Modern Family Screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-laptop"></i><span>Modern Family</span></div>
+                </div>
+                <div class="image-caption">El escritorio virtual de Claire se convierte en el plano único de la historia.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Levitan, S. (Director). (2015, 25 de febrero). Connection Lost (Modern Family, T6, E16) [Episodio]. ABC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 11: THIS IS US -->
+    <div class="slide-container">
+        <h2 class="slide-title">This Is Us <span>Evidencia 11</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Super Bowl Sunday (T2E14)</td><th>Año / País</th><td>2018 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Dan Fogelman</td><th>Cadena / Plataforma</th><td>NBC</td></tr>
+                        <tr><th>Género</th><td>Drama familiar</td><th>Duración aprox.</th><td>45 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2018. Renovó el melodrama de red abierta mediante un diseño sofisticado de saltos temporales que resignifican el trauma familiar.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>La trágica y emotiva muerte de Jack Pearson tras el incendio familiar y las ramificaciones emocionales del duelo en Rebecca.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto del duelo y la pérdida irreparable. Estructura no lineal intercalando recuerdos. Tono solemne y emotivo (melodrama clásico).</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> Justificación: Indaga el peso de la herencia emocional paterna y los traumas colectivos que unen o fracturan el núcleo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Drama familiar de prestigio en televisión abierta contemporánea. Uso del melodrama serializado como motor de engagement.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un drama familiar sumamente catártico. Retrata el duelo con una contención digna, demostrando el impacto que la memoria ejerce en la identidad colectiva del núcleo familiar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/18245765519371366550" alt="This Is Us Pearson" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-house-fire"></i><span>This Is Us</span></div>
+                </div>
+                <div class="image-caption">La contención del rostro de Rebecca encapsula la ruptura silenciosa del núcleo familiar.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Ficarra, G., & Requa, J. (Directores). (2018, 4 de febrero). Super Bowl Sunday (This Is Us, T2, E14) [Episodio]. NBC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 12: MALCOLM IN THE MIDDLE -->
+    <div class="slide-container">
+        <h2 class="slide-title">Malcolm in the Middle <span>Evidencia 12</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Bowling (T2E20)</td><th>Año / País</th><td>2001 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Linwood Boomer</td><th>Cadena / Plataforma</th><td>Fox</td></tr>
+                        <tr><th>Género</th><td>Comedia familiar</td><th>Duración aprox.</th><td>22 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2001. Revolucionó la comedia de inicio de siglo al suprimir las risas grabadas y usar el formato ágil de cámara única.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Estructura de universos alternos: la noche de Malcolm en el boliche cambia drásticamente si lo lleva Lois (control) o Hal (caos).</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de la autoridad parental. Estructura no lineal paralela de montaje cruzado. Cinismo satírico y ruptura de la cuarta pared.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> Examina de forma satírica las dinámicas de crianza y los lazos fraternales de la clase trabajadora disfuncional.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Comedia familiar moderna de cámara única. Ruptura de los paradigmas ideales de la familia televisiva de los ochenta.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un juego brillante de perspectivas que contrasta control y libertad. Demuestra con humor cínico que la realidad de los hijos depende directamente de quién imponga las reglas parentales.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/5493136968289264807" alt="Malcolm Bowling split" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-bowling-ball"></i><span>Malcolm</span></div>
+                </div>
+                <div class="image-caption">La duplicidad de Lois y Hal ejemplifica el contraste absoluto de los estilos de crianza.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Reid, A. (Escritor), & Holland, T. (Director). (2001, 1 de abril). Bowling (Malcolm in the Middle, T2, E20) [Episodio]. Fox.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 13: MARRIED... WITH CHILDREN -->
+    <div class="slide-container">
+        <h2 class="slide-title">Married... with Children <span>Evidencia 13</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Pilot (S1E01)</td><th>Año / País</th><td>1987 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Michael G. Moye, Ron Leavitt</td><th>Cadena / Plataforma</th><td>Fox</td></tr>
+                        <tr><th>Género</th><td>Sitcom familiar satírica</td><th>Duración aprox.</th><td>23 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Fines de los ochenta. Primer gran éxito de la emergente cadena Fox. Relevancia: Operó como antítesis de las comedias domésticas perfectas.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>El piloto retrata el hastío cínico del zapatero Al Bundy, contrastando su realidad con el optimismo ingenuo de sus vecinos recién casados.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de desencanto y frustración cotidiana. Diálogos ácidos y repletos de sarcasmo corrosivo. Actuaciones intencionadamente grotescas.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> El hogar se retrata como el escenario de insatisfacción y la parodia ácida de la vida conyugal de clase media.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Sitcom de contra-tendencia. Representa una flexibilización moral del humor televisivo hacia formas políticamente incorrectas.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Aunque fue pionera en romper la imagen perfecta del hogar norteamericano, hoy se percibe cínica, forzada y anticuada, evidenciando dinámicas de género que no envejecieron bien.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/12505121350760585142" alt="Bundy sofa" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-socks"></i><span>Married... with Children</span></div>
+                </div>
+                <div class="image-caption">El sofá de los Bundy como representación satírica del fracaso del ideal de hogar de los ochenta.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Moye, M. G., & Leavitt, R. (1987, 5 de abril). Pilot (Married... with Children, T1, E1) [Episodio]. Fox.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 14: ARRESTED DEVELOPMENT -->
+    <div class="slide-container">
+        <h2 class="slide-title">Arrested Development <span>Evidencia 14</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Pier Pressure (T1E10)</td><th>Año / País</th><td>2004 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Mitchell Hurwitz</td><th>Cadena / Plataforma</th><td>Fox / Netflix</td></tr>
+                        <tr><th>Género</th><td>Comedia satírica</td><th>Duración aprox.</th><td>22 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2004. Introdujo la narrativa autoconsciente e incómoda basada en la parodia de telerrealidad y un montaje frenético no apto para TV lineal.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Michael planea impartir una compleja lección moral a su hijo sobre las drogas, replicando torpemente los métodos absurdos de su propio padre.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de mentiras encadenadas. Uso de cortes de salto, flashbacks breves y narrador omnisciente e irónico. Tono seco e incómodo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> Parodia de las taras psicológicas y financieras que se heredan irónicamente de generación en generación.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Comedia de autor de cámara única. Pionera en exigir atención y memoria acumulativa a una audiencia de nicho en televisión por cable.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Una comedia sumamente inteligente y cargada de ironía y referencias internas. Sin embargo, su tono frío dificulta la conexión emocional directa con su disfuncional red de personajes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/17489954467642598610" alt="Arrested Development Lesson" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-diagram-project"></i><span>Arrested Dev</span></div>
+                </div>
+                <div class="image-caption">La lección absurda de Michael ejemplifica la torpeza educativa transgeneracional Bluth.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Vallely, J. (Escritor), & Russo, J. (Director). (2004, 11 de enero). Pier Pressure (Arrested Development, T1, E10) [Episodio]. Fox.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 15: BLUEY -->
+    <div class="slide-container">
+        <h2 class="slide-title">Bluey <span>Evidencia 15</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Sleepytime (T2E26)</td><th>Año / País</th><td>2020 / Australia</td></tr>
+                        <tr><th>Creador(es)</th><td>Joe Brumm</td><th>Cadena / Plataforma</th><td>ABC Kids / Disney+</td></tr>
+                        <tr><th>Género</th><td>Animación familiar</td><th>Duración aprox.</th><td>7 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Fenómeno de la animación contemporánea. Éxito global al dotar de una doble lectura compleja el juego simbólico e infantil de la crianza.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Bingo transita por un sueño onírico espacial sobre planetas mientras persigue su meta real de dormir sola toda la noche.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de maduración (aprender a soltar). Estructura poética y onírica. Uso dramático de la suite de Holst y la simbología del color.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Familia.</strong> El relato se centra enteramente en el apego seguro y la calidez incondicional del núcleo parental en el crecimiento.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Animación moderna de prestigio. Representa cómo un micro-formato televisivo puede albergar metáforas emocionales profundas.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Una obra de arte animada que trasciende edades. Sleepytime es poesía visual que relata con ternura el proceso de crecimiento e independencia emocional dentro del núcleo familiar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6868272758370561294" alt="Bluey Sleepytime" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-moon"></i><span>Bluey</span></div>
+                </div>
+                <div class="image-caption">El sol como metáfora del amor y refugio materno en el trayecto de maduración de Bingo.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Brumm, J. (Creador). (2020, 11 de abril). Sleepytime (Bluey, T2, E26) [Episodio]. Ludo Studio; Disney+.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEPARADOR BLOQUE 4 -->
+    <div class="slide-container section-separator" id="bloque-4">
+        <p style="font-size: 16px; letter-spacing: 4px;">SECCIÓN 04</p>
+        <h2>Amigos</h2>
+        <p>Liderazgo, vulnerabilidad emocional y el surgimiento del sentido de comunidad</p>
+        <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 16: TED LASSO - RAINBOW -->
+    <div class="slide-container">
+        <h2 class="slide-title">Ted Lasso: Rainbow <span>Evidencia 16</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Rainbow (T2E05)</td><th>Año / País</th><td>2021 / Estados Unidos - Reino Unido</td></tr>
+                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
+                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>38 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Lanzada en pandemia. Se erigió en el estandarte de la comedia optimista de plataformas, priorizando la empatía frente al cinismo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>El capitán Isaac busca reconectar con su confianza deportiva; Roy Kent se enfrenta al dilema vital de volver al club como entrenador.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de identidad y rol. Estructura que emplea códigos y tropos de comedia romántica aplicados a la hermandad deportiva masculina.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Amigos / Trabajo.</strong> El club se deconstruye como un espacio seguro donde el cuidado afectivo mutuo define las dinámicas profesionales.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Comedia dramática en ecosistemas de streaming. Muestra la flexibilización de arquetipos masculinos tradicionales hacia la vulnerabilidad.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Una celebración emotiva del liderazgo y la pertenencia grupal, aunque el guion a veces fuerza la comedia optimista para asegurar la catarsis emocional del espectador.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/9998196286724190668" alt="Roy Kent returns" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-medal"></i><span>Ted Lasso</span></div>
+                </div>
+                <div class="image-caption">El retorno de Roy Kent al césped simboliza el reencuentro con la pertenencia y el propósito común.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Wrubel, B. (Escritor), & Dunton, E. (Directora). (2021, 20 de agosto). Rainbow (Ted Lasso, T2, E5) [Episodio]. Apple TV+.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 17: TED LASSO - SUNFLOWERS -->
+    <div class="slide-container">
+        <h2 class="slide-title">Ted Lasso: Sunflowers <span>Evidencia 17</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Sunflowers (T3E06)</td><th>Año / País</th><td>2023 / Estados Unidos - Reino Unido</td></tr>
+                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
+                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>63 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2023. Fase final de la serie de Apple TV+. Representa la maduración de las series de autor de streaming que se permiten pausas de ritmo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Noche de asueto total en Ámsterdam. Cada personaje sigue una línea separada de introspección, libertad y redefinición identitaria personal.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto puramente interno de reconciliación personal. Ritmo pausado y contemplativo. Uso expresivo de la atmósfera urbana holandesa.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Amigos / Trabajo.</strong> La amistad sincera sustituye los linderos de la relación contractual laboral deportiva ordinaria.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Narrativas corales extendidas de streaming. Representa la autonomía estética que dedican las plataformas al desarrollo humano profundo de los arcos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Mucho más humano y emocional que Rainbow. El escenario de Ámsterdam suspende la comedia futbolística para enfocarse en la vulnerabilidad, el crecimiento interno y el autodescubrimiento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/16338099119136854553" alt="Amsterdam Sunflowers" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-seedling"></i><span>Sunflowers</span></div>
+                </div>
+                <div class="image-caption">Ámsterdam opera como un espacio de suspensión temporal e introspección afectiva coral.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Hunt, B. (Escritor), & Lowney, D. (Director). (2023, 19 de abril). Sunflowers (Ted Lasso, T3, E6) [Episodio]. Apple TV+.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEPARADOR BLOQUE 5 -->
+    <div class="slide-container section-separator" id="bloque-5">
+        <p style="font-size: 16px; letter-spacing: 4px;">SECCIÓN 05</p>
+        <h2>Trabajo</h2>
+        <p>Presión extrema, tecnicismo y el hospital como escenario de conflicto ético y dilemas de vida o muerte</p>
+        <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 18: ER -->
+    <div class="slide-container">
+        <h2 class="slide-title">ER <span>Evidencia 18</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Be Still My Heart (T6E13)</td><th>Año / País</th><td>2000 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>Michael Crichton</td><th>Cadena / Plataforma</th><td>NBC</td></tr>
+                        <tr><th>Género</th><td>Drama médico</td><th>Duración aprox.</th><td>45 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Año 2000. Cúspide de la televisión abierta comercial. Redefinió formalmente el drama médico mediante un ritmo asombroso de cámara en movimiento constante.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Bajo la presión de San Valentín, Carter y Lucy atienden a un paciente psiquiátrico en urgencias. La jornada culmina en un shock de agresión inesperado.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de supervivencia ante el agotamiento y la locura. Ritmo frenético de planos secuencia continuos (*Steadicam*). Lenguaje y tecnicismo médico absoluto.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo.</strong> El hospital opera como el único ecosistema regente; la presión extenuante anula temporalmente la esfera afectiva.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Consolidación del drama profesional médico clásico. Representa la madurez y espectacularidad del medio en la era previa a la fragmentación digital.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un drama médico intenso que transita de la rutina cotidiana al shock total. Demuestra de manera realista cómo la sala de urgencias mezcla dilemas morales, técnicos y de vida.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3173071077835111679" alt="ER Emergency Room" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-hospital"></i><span>ER (Urgencias)</span></div>
+                </div>
+                <div class="image-caption">La vertiginosa urgencia de la sala médica como escenario de permanente confrontación moral.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Woodward, L. (Escritora), & Innes, L. (Directora). (2000, 10 de febrero). Be Still My Heart (ER, T6, E13) [Episodio]. NBC.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 19: THE PITT -->
+    <div class="slide-container">
+        <h2 class="slide-title">The Pitt <span>Evidencia 19</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>6:00 P.M. (T1E12)</td><th>Año / País</th><td>2025 / Estados Unidos</td></tr>
+                        <tr><th>Creador(es)</th><td>R. Scott Gemmill</td><th>Cadena / Plataforma</th><td>Max (HBO Max)</td></tr>
+                        <tr><th>Género</th><td>Drama médico</td><th>Duración aprox.</th><td>41 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>2025. Actualiza el drama médico de alta fidelidad técnica uniendo la crudeza social post-pandémica con la inmediatez del consumo en streaming.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Una saturación crítica y masiva desborda las urgencias del hospital mientras los suministros se agotan, exigiendo triajes límite.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>Conflicto de triaje y saturación sistémica. Estructura inmersiva casi en tiempo real. Puesta en escena hiperrealista y exenta de melodrama convencional.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo / Temas Actuales.</strong> Expone directamente el *burnout* (desgaste profesional) y el colapso financiero del sistema de salud actual.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Drama profesional en streaming. Muestra la vigencia del drama hospitalario para construir relatos críticos de inmersión total en la TV contemporánea.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Un relato de inmersión total sin respiro. Expone de manera cruda el desgaste médico real y la saturación sistémica actual, haciendo de cada decisión un asunto urgente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/5928571587889955359" alt="The Pitt tension" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-heart-pulse"></i><span>The Pitt</span></div>
+                </div>
+                <div class="image-caption">La escasez operativa extrema tensiona el deber ético de los doctores en tiempo real.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Sachs, J. (Escritor), & Gemmill, R. S. (Director). (2025, 20 de marzo). 6:00 P.M. (The Pitt, T1, E12) [Episodio]. Max.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CIERRE -->
+    <div class="slide-container title-slide" id="slide-cierre">
+        <h2 style="color: #b8925e; font-size: 38px; margin-bottom: 20px;">Reflexión Final del Portafolio</h2>
+        <div style="max-width: 900px; text-align: justify; line-height: 1.8; color: #334155;">
+            <p style="font-size: 16px; margin: 0 0 15px 0;">Este exhaustivo portafolio analítico documenta la evolución dramática y técnica de la televisión moderna. Al confrontar los cimientos de la sitcom tradicional con el realismo inmersivo y las complejas producciones de streaming contemporáneas de 2025, se corrobora que las esferas de conflicto universales de McKee (familia, amigos y trabajo) actúan como el pegamento emocional invariable que nos vincula a la pantalla.</p>
+            <p style="font-size: 16px; margin: 0;">La deconstrucción de estas 19 evidencias académicas demuestra que la televisión es un reflejo activo, político e identitario de nuestra sociedad, forzándonos a transitar del rol de espectadores pasivos a ser ávidos analistas críticos de los mensajes y su compleja gramática visual.</p>
+        </div>
+        <p style="margin-top: 50px; font-weight: 700; color: #0f172a; letter-spacing: 2px; font-size: 12px;">FIN DE LA EVALUACIÓN • LICENCIATURA EN COMUNICACIÓN</p>
+    </div>
+
+</div>
+
+<script>
+    // Sistema dinámico de seguimiento de scroll para la navegación flotante
+    const sections = document.querySelectorAll('.slide-container, .section-separator');
+    const navLinks = document.querySelectorAll('.nav-btn');
+
+    window.addEventListener('scroll', () => {
+        let currentSection = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 150) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
