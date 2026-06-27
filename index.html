@@ -179,8 +179,9 @@
         .visual-column {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            justify-content: space-between;
+            gap: 6px;
+            justify-content: flex-start;
+            align-items: stretch;
             height: 100%;
         }
         .image-wrapper {
@@ -208,7 +209,14 @@
         .fallback-img i { font-size: 32px; color: #b8925e; }
         .fallback-img span { font-size: 11px; font-family: 'JetBrains Mono', monospace; }
 
-        .image-caption { font-size: 11px; font-style: italic; color: #64748b; text-align: center; line-height: 1.3; }
+        .image-caption {
+            font-size: 11px;
+            font-style: italic;
+            color: #64748b;
+            text-align: center;
+            line-height: 1.25;
+            margin-top: 2px;
+        }
 
         .apa-footer {
             background: #0f172a;
@@ -220,6 +228,22 @@
             line-height: 1.3;
         }
         .apa-footer strong { color: #b8925e; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 8px; }
+
+        .slide-reference-bar {
+            width: 100%;
+            margin-top: 12px;
+            padding: 7px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 8.2px;
+            line-height: 1.1;
+            overflow: hidden;
+        }
+        .slide-reference-bar strong {
+            display: inline;
+            margin: 0 8px 0 0;
+            font-size: 8.2px;
+        }
 
         /* SEPARADORES DE BLOQUE */
         .section-separator {
@@ -1884,6 +1908,16 @@
 </div>
 
 <script>
+    document.querySelectorAll('.series-layout').forEach(layout => {
+        const visualColumn = layout.querySelector('.visual-column');
+        const footer = visualColumn ? visualColumn.querySelector('.apa-footer') : null;
+
+        if (!footer) return;
+
+        footer.classList.add('slide-reference-bar');
+        layout.insertAdjacentElement('afterend', footer);
+    });
+
     // Sistema dinámico de seguimiento de scroll para la navegación flotante
     const sections = document.querySelectorAll('.slide-container, .section-separator');
     const navLinks = document.querySelectorAll('.nav-btn');
