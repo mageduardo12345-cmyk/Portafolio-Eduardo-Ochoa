@@ -324,6 +324,36 @@
             font-size: 15px;
             color: #7c8daa;
         }
+        .essay-slide {
+            justify-content: center;
+        }
+        .essay-slide h2 {
+            color: #b8925e;
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+        .essay-content {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 28px 34px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fbfdff 0%, #f2f6fb 100%);
+            border: 1px solid #dce6f2;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        }
+        .essay-content p {
+            margin: 0 0 16px 0;
+            font-size: 17px;
+            line-height: 1.72;
+            color: #334155;
+            text-align: justify;
+        }
+        .essay-content p:last-child {
+            margin-bottom: 0;
+        }
+        .legacy-closeout {
+            display: none;
+        }
         .index-slide {
             padding: 28px 42px 28px 42px;
         }
@@ -393,7 +423,7 @@
     <a href="#bloque-4" class="nav-btn">04. Amigos</a>
     <a href="#bloque-5" class="nav-btn">05. Trabajo</a>
     <a href="#bloque-6" class="nav-btn">06. Temas</a>
-    <a href="#slide-cierre" class="nav-btn">07. Cierre</a>
+    <a href="#slide-conclusion" class="nav-btn">07. Cierre</a>
 </div>
 
 <div class="portfolio-wrapper">
@@ -406,6 +436,15 @@
         <div class="title-meta">
             <strong>EDUARDO OCHOA ROSAS</strong>
             <span>ID: 00503721</span>
+        </div>
+    </div>
+
+    <!-- INTRODUCCIÓN -->
+    <div class="slide-container essay-slide" id="slide-introduccion">
+        <h2>Introducción</h2>
+        <div class="essay-content">
+            <p>Este portafolio reúne el análisis de distintas series y episodios de diferentes épocas, géneros y plataformas. A través de cada evidencia se revisan elementos como la narrativa, los personajes, los recursos audiovisuales, la clasificación de Robert McKee y la relación de cada serie con la evolución de la televisión.</p>
+            <p>El objetivo es mostrar cómo las series han cambiado en su forma de contar historias y representar temas como la familia, la amistad, el trabajo, el poder, la tecnología y los conflictos sociales. Además de describir cada episodio, el portafolio incluye una reflexión crítica sobre cómo estas producciones generan emoción, tensión, humor o identificación en el espectador.</p>
         </div>
     </div>
 
@@ -476,9 +515,10 @@
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#slide-cierre">07. Reflexión final</a>
+                <a class="index-group-title" href="#slide-conclusion">07. Cierre académico</a>
                 <ul>
-                    <li><a href="#slide-cierre">Cierre y conclusiones</a></li>
+                    <li><a href="#slide-conclusion">Conclusión del portafolio</a></li>
+                    <li><a href="#slide-cierre">Reflexión personal sobre la materia</a></li>
                 </ul>
             </div>
         </div>
@@ -2061,9 +2101,28 @@
     </div>
 
     <!-- CIERRE -->
-    <div class="slide-container title-slide" id="slide-cierre">
+    <div class="slide-container essay-slide" id="slide-conclusion">
+        <h2>Conclusión del portafolio</h2>
+        <div class="essay-content">
+            <p>Este portafolio permitió analizar cómo las series han evolucionado en sus formas de narrar, desde las sitcoms clásicas hasta las producciones actuales de streaming. A lo largo de los episodios se identificaron cambios en la estructura, el uso del cliffhanger, la construcción de personajes, la tecnología, el montaje, el sonido y la estética visual. También se pudo observar que temas como familia, amistad, trabajo, poder y violencia siguen presentes, pero se representan de formas distintas según la época y el formato de cada serie.</p>
+            <p>En conjunto, las series muestran que la televisión no solo busca entretener, sino también reflejar conflictos sociales, emocionales y culturales. Algunas utilizan la comedia para hablar de relaciones cotidianas, mientras otras construyen tensión desde el suspenso, la política, el trabajo o la psicología. El análisis permitió entender que cada decisión audiovisual, desde una toma hasta un silencio o un final abierto, influye en la experiencia del espectador.</p>
+        </div>
+    </div>
+
+    <!-- REFLEXIÓN PERSONAL -->
+    <div class="slide-container essay-slide" id="slide-cierre">
+        <h2>Reflexión personal sobre la materia</h2>
+        <div class="essay-content">
+            <p>La materia me gustó porque me hizo ver las series de una forma diferente. Antes las veía más como entretenimiento, pero ahora puedo identificar cuándo una escena usa el diálogo, el montaje, la música, la cámara o el espacio para generar una emoción. También me ayudó a entender por qué algunas series conectan más conmigo que otras, aunque todas tengan algo importante que aportar dentro de la evolución televisiva.</p>
+            <p>Las series que más me gustaron fueron <i>It’s All Her Fault</i>, <i>The Newsroom</i>, <i>This Is Us</i>, <i>Malcolm in the Middle</i>, <i>The Bear</i> y <i>Bluey</i>, porque lograron atraparme desde la tensión, la emoción o la nostalgia. Me gustaría seguir viendo <i>It’s All Her Fault</i> para saber qué ocurrió con el niño, <i>This Is Us</i> porque conecté con la historia de la familia Pearson y <i>The Bear</i> porque me gustó mucho la transformación de Richie. En general, me quedo con la idea de que una buena serie puede hacerte reír, incomodar o emocionarte, pero también hacerte pensar en las personas y en la época que representa.</p>
+        </div>
+        <p style="margin-top: 50px; font-weight: 700; color: #0f172a; letter-spacing: 2px; font-size: 12px;">FIN DE LA EVALUACIÓN</p>
+    </div>
+
+    <!-- REFLEXIÓN PERSONAL ANTERIOR -->
+    <div class="slide-container essay-slide legacy-closeout" id="slide-cierre-old">
         <h2 style="color: #b8925e; font-size: 38px; margin-bottom: 20px;">Reflexión Final del Portafolio</h2>
-        <div style="max-width: 900px; text-align: justify; line-height: 1.8; color: #334155;">
+        <div class="essay-content">
             <p style="font-size: 16px; margin: 0 0 15px 0;">Al terminar este portafolio entendí que las series no solo cambian por la época, sino por la forma en que cuentan conflictos y construyen emociones. Desde las sitcoms clásicas hasta las series actuales de streaming, se nota una evolución en el uso de la cámara, el montaje, la música, los diálogos y la estructura narrativa. Algunas historias se apoyan en el humor, otras en el suspenso o el drama, pero todas muestran algo sobre la familia, la amistad, el trabajo, el poder o la manera en que vivimos.</p>
             <p style="font-size: 16px; margin: 0;">También me di cuenta de que una serie puede ser importante aunque no sea de mi gusto personal. Hubo episodios que me atraparon mucho por su tensión o emoción, como <i>This Is Us</i>, <i>The Bear</i>, <i>Mindhunter</i> o <i>It’s All Her Fault</i>, y otros que no conectaron tanto conmigo, pero que ayudaron a entender formatos más clásicos o estilos de comedia diferentes. Lo más interesante fue ver que las series pueden reflejar su tiempo: muestran cambios en la sociedad, en la tecnología, en las relaciones y en la forma de representar a los personajes. Al final, este portafolio me permitió ver la televisión no solo como entretenimiento, sino como una forma de contar y analizar experiencias humanas.</p>
         </div>
