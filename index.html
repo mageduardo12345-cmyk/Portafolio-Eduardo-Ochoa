@@ -303,7 +303,21 @@
             margin-bottom: 8px;
             max-width: 900px;
         }
+        .title-kicker {
+            margin: 0 0 18px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #b8925e;
+        }
         .title-slide .decorator { width: 200px; height: 5px; background: #b8925e; margin: 8px auto 14px auto; }
+        .title-logo {
+            width: 148px;
+            height: auto;
+            display: block;
+            margin: 0 auto 18px auto;
+        }
         .title-subtitle {
             font-size: 24px;
             color: #7c8daa;
@@ -311,7 +325,7 @@
             margin: 0 0 28px 0;
         }
         .title-meta {
-            margin-top: 8px;
+            margin-top: 14px;
             line-height: 1.35;
         }
         .title-meta strong {
@@ -323,6 +337,20 @@
         .title-meta span {
             font-size: 15px;
             color: #7c8daa;
+        }
+        .title-details {
+            margin-top: 20px;
+            display: grid;
+            gap: 8px;
+            justify-items: center;
+        }
+        .title-details p {
+            margin: 0;
+            font-size: 15px;
+            color: #475569;
+        }
+        .title-details strong {
+            color: #18233d;
         }
         .essay-slide {
             justify-content: center;
@@ -400,14 +428,66 @@
             color: #3f4d67;
             font-size: 15px;
             line-height: 1.2;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: baseline;
         }
-        .index-group a {
+        .index-entry {
             color: #3f4d67;
             text-decoration: none;
+            flex: 1;
         }
-        .index-group a:hover {
-            color: #18233d;
-            text-decoration: underline;
+        .page-number {
+            min-width: 26px;
+            text-align: right;
+            color: #b8925e;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .sources-slide {
+            justify-content: flex-start;
+            padding-top: 34px;
+        }
+        .sources-slide h2 {
+            color: #b8925e;
+            font-size: 34px;
+            margin-bottom: 16px;
+        }
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 26px;
+        }
+        .sources-card {
+            background: linear-gradient(180deg, #fbfdff 0%, #f2f6fb 100%);
+            border: 1px solid #dce6f2;
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+        .sources-card h3 {
+            font-size: 15px;
+            color: #0f172a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sources-card ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .sources-card li {
+            margin-bottom: 7px;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #334155;
+        }
+        .sources-note {
+            margin-top: 16px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #64748b;
         }
     </style>
 </head>
@@ -430,6 +510,8 @@
 
     <!-- PORTADA -->
     <div class="slide-container title-slide" id="slide-inicio">
+        <img class="title-logo" src="assets/images/logo-anahuac.png" alt="Logo de la Universidad Anahuac Mexico">
+        <p class="title-kicker">Universidad Anahuac Mexico</p>
         <h1>PORTAFOLIO DE EVIDENCIAS &#8226;<br>ENTREGA FINAL</h1>
         <div class="decorator"></div>
         <p class="title-subtitle">Antecedentes y desarrollo de las series audiovisuales</p>
@@ -437,14 +519,19 @@
             <strong>EDUARDO OCHOA ROSAS</strong>
             <span>ID: 00503721</span>
         </div>
+        <div class="title-details">
+            <p><strong>Materia:</strong> Antecedentes y desarrollo de las series audiovisuales</p>
+            <p><strong>Docente:</strong> Alicia Helena Hernandez Barba</p>
+            <p><strong>Fecha de entrega:</strong> 6 de julio de 2026</p>
+        </div>
     </div>
 
     <!-- INTRODUCCIÓN -->
     <div class="slide-container essay-slide" id="slide-introduccion">
         <h2>Introducción</h2>
         <div class="essay-content">
-            <p>Este portafolio reúne el análisis de distintas series y episodios de diferentes épocas, géneros y plataformas. A través de cada evidencia se revisan elementos como la narrativa, los personajes, los recursos audiovisuales, la clasificación de Robert McKee y la relación de cada serie con la evolución de la televisión.</p>
-            <p>El objetivo es mostrar cómo las series han cambiado en su forma de contar historias y representar temas como la familia, la amistad, el trabajo, el poder, la tecnología y los conflictos sociales. Además de describir cada episodio, el portafolio incluye una reflexión crítica sobre cómo estas producciones generan emoción, tensión, humor o identificación en el espectador.</p>
+            <p>Este portafolio reúne 29 evidencias organizadas en seis bloques temáticos: política y poder, series clásicas, familia, amigos, trabajo y temas actuales. En cada una se analiza un episodio o fragmento a partir de su narrativa, sus personajes, sus recursos audiovisuales, su clasificación según Robert McKee y su lugar dentro de la evolución de las series televisivas.</p>
+            <p>El propósito del trabajo es mostrar cómo las series han cambiado en su forma de contar historias y representar conflictos relacionados con la familia, la amistad, el trabajo, el poder, la tecnología y la vida social. Además de describir cada caso, el portafolio busca reunir los principales aprendizajes de la materia y explicar de qué manera estas producciones generan emoción, tensión, humor, identificación y lectura crítica en el espectador.</p>
         </div>
     </div>
 
@@ -456,69 +543,70 @@
         </div>
         <div class="index-grid">
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-1">01. Política y poder</a>
+                <div class="index-group-title">01. Política y poder</div>
                 <ul>
-                    <li><a href="#slide-01">The West Wing</a></li>
-                    <li><a href="#slide-02">House of Cards</a></li>
-                    <li><a href="#slide-03">It&#8217;s All Her Fault</a></li>
-                    <li><a href="#slide-04">The Newsroom</a></li>
+                    <li><span class="index-entry">The West Wing</span><span class="page-number">5</span></li>
+                    <li><span class="index-entry">House of Cards</span><span class="page-number">6</span></li>
+                    <li><span class="index-entry">It&#8217;s All Her Fault</span><span class="page-number">7</span></li>
+                    <li><span class="index-entry">The Newsroom</span><span class="page-number">8</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-2">02. Series clásicas</a>
+                <div class="index-group-title">02. Series clásicas</div>
                 <ul>
-                    <li><a href="#slide-05">I Love Lucy</a></li>
-                    <li><a href="#slide-06">The Dick Van Dyke Show</a></li>
-                    <li><a href="#slide-07">The Untouchables</a></li>
-                    <li><a href="#slide-08">The Twilight Zone</a></li>
+                    <li><span class="index-entry">I Love Lucy</span><span class="page-number">10</span></li>
+                    <li><span class="index-entry">The Dick Van Dyke Show</span><span class="page-number">11</span></li>
+                    <li><span class="index-entry">The Untouchables</span><span class="page-number">12</span></li>
+                    <li><span class="index-entry">The Twilight Zone</span><span class="page-number">13</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-3">03. Familia</a>
+                <div class="index-group-title">03. Familia</div>
                 <ul>
-                    <li><a href="#slide-09">Friends</a></li>
-                    <li><a href="#slide-10">Modern Family</a></li>
-                    <li><a href="#slide-11">This Is Us</a></li>
-                    <li><a href="#slide-12">Malcolm in the Middle</a></li>
-                    <li><a href="#slide-13">Married... with Children</a></li>
-                    <li><a href="#slide-14">Arrested Development</a></li>
-                    <li><a href="#slide-15">Bluey</a></li>
+                    <li><span class="index-entry">Friends</span><span class="page-number">15</span></li>
+                    <li><span class="index-entry">Modern Family</span><span class="page-number">16</span></li>
+                    <li><span class="index-entry">This Is Us</span><span class="page-number">17</span></li>
+                    <li><span class="index-entry">Malcolm in the Middle</span><span class="page-number">18</span></li>
+                    <li><span class="index-entry">Married... with Children</span><span class="page-number">19</span></li>
+                    <li><span class="index-entry">Arrested Development</span><span class="page-number">20</span></li>
+                    <li><span class="index-entry">Bluey</span><span class="page-number">21</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-4">04. Amigos</a>
+                <div class="index-group-title">04. Amigos</div>
                 <ul>
-                    <li><a href="#slide-16">Ted Lasso: Rainbow</a></li>
-                    <li><a href="#slide-17">Ted Lasso: Sunflowers</a></li>
-                    <li><a href="#slide-18">2 Broke Girls</a></li>
-                    <li><a href="#slide-19">Shrinking</a></li>
-                    <li><a href="#slide-20">Seinfeld</a></li>
-                    <li><a href="#slide-21">How I Met Your Mother</a></li>
+                    <li><span class="index-entry">2 Broke Girls</span><span class="page-number">23</span></li>
+                    <li><span class="index-entry">Shrinking</span><span class="page-number">24</span></li>
+                    <li><span class="index-entry">Seinfeld</span><span class="page-number">25</span></li>
+                    <li><span class="index-entry">How I Met Your Mother</span><span class="page-number">26</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-5">05. Trabajo</a>
+                <div class="index-group-title">05. Trabajo</div>
                 <ul>
-                    <li><a href="#slide-22">ER (Urgencias)</a></li>
-                    <li><a href="#slide-23">The Pitt</a></li>
-                    <li><a href="#slide-24">Mindhunter</a></li>
-                    <li><a href="#slide-25">Law &amp; Order: SVU</a></li>
-                    <li><a href="#slide-26">Mad Men</a></li>
-                    <li><a href="#slide-27">The Bear: Forks</a></li>
+                    <li><span class="index-entry">Ted Lasso: Rainbow</span><span class="page-number">28</span></li>
+                    <li><span class="index-entry">Ted Lasso: Sunflowers</span><span class="page-number">29</span></li>
+                    <li><span class="index-entry">ER (Urgencias)</span><span class="page-number">30</span></li>
+                    <li><span class="index-entry">The Pitt</span><span class="page-number">31</span></li>
+                    <li><span class="index-entry">Mindhunter</span><span class="page-number">32</span></li>
+                    <li><span class="index-entry">Law &amp; Order: SVU</span><span class="page-number">33</span></li>
+                    <li><span class="index-entry">Mad Men</span><span class="page-number">34</span></li>
+                    <li><span class="index-entry">The Bear: Forks</span><span class="page-number">35</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#bloque-6">06. Temas actuales</a>
+                <div class="index-group-title">06. Temas actuales</div>
                 <ul>
-                    <li><a href="#slide-28">Adolescence: Episode 3</a></li>
-                    <li><a href="#slide-29">Black Mirror: Nosedive</a></li>
+                    <li><span class="index-entry">Adolescence: Episode 3</span><span class="page-number">37</span></li>
+                    <li><span class="index-entry">Black Mirror: Nosedive</span><span class="page-number">38</span></li>
                 </ul>
             </div>
             <div class="index-group">
-                <a class="index-group-title" href="#slide-conclusion">07. Cierre académico</a>
+                <div class="index-group-title">07. Cierre académico</div>
                 <ul>
-                    <li><a href="#slide-conclusion">Conclusión del portafolio</a></li>
-                    <li><a href="#slide-cierre">Reflexión personal sobre la materia</a></li>
+                    <li><span class="index-entry">Conclusión del portafolio</span><span class="page-number">39</span></li>
+                    <li><span class="index-entry">Reflexión personal sobre la materia</span><span class="page-number">40</span></li>
+                    <li><span class="index-entry">Fuentes consultadas</span><span class="page-number">41</span></li>
                 </ul>
             </div>
         </div>
@@ -1336,110 +1424,6 @@
         <div class="decorator"></div>
     </div>
 
-    <!-- EVIDENCIA 16: TED LASSO - RAINBOW -->
-    <div class="slide-container" id="slide-16">
-        <h2 class="slide-title">Ted Lasso: Rainbow <span>Evidencia 16</span></h2>
-        <div class="series-layout">
-            <div class="analysis-column">
-                <div class="ficha-box">
-                    <table>
-                        <tr><th>Episodio Analizado</th><td>Rainbow (T2E05)</td><th>Año / País</th><td>2021 / Estados Unidos - Reino Unido</td></tr>
-                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
-                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>38 minutos</td></tr>
-                    </table>
-                </div>
-                <div class="analysis-matrix">
-                    <div class="cuadro-analitico">
-                        <h4>2. Contextualización</h4>
-                        <p>Lanzada en pandemia. Se erigió en el estandarte de la comedia optimista de plataformas, priorizando la empatía frente al cinismo.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>3. Síntesis</h4>
-                        <p>El capitán Isaac busca reconectar con su confianza deportiva; Roy Kent se enfrenta al dilema vital de volver al club como entrenador.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>4. Análisis Narrativo</h4>
-                        <p>Conflicto de identidad y rol. Estructura que emplea códigos y tropos de comedia romántica aplicados a la hermandad deportiva masculina.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>5. Clasificación McKee</h4>
-                        <p><strong>Amigos / Trabajo.</strong> El club se deconstruye como un espacio seguro donde el cuidado afectivo mutuo define las dinámicas profesionales.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>6. Vinculación Materia</h4>
-                        <p>Comedia dramática en ecosistemas de streaming. Muestra la flexibilización de arquetipos masculinos tradicionales hacia la vulnerabilidad.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>7. Reflexión Crítica</h4>
-                        <p>Una celebración emotiva del liderazgo y la pertenencia grupal, aunque el guion a veces fuerza la comedia optimista para asegurar la catarsis emocional del espectador.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-column">
-                <div class="image-wrapper">
-                    <img src="assets/images/ted-lasso-rainbow.jpg" alt="Roy Kent returns" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="fallback-img"><i class="fa-solid fa-medal"></i><span>Ted Lasso</span></div>
-                </div>
-                <div class="image-caption">El retorno de Roy Kent al césped simboliza el reencuentro con la pertenencia y el propósito común.</div>
-                <div class="apa-footer">
-                    <strong>Referencia APA 7</strong>Wrubel, B. (Escritor), & Dunton, E. (Directora). (2021, 20 de agosto). Rainbow (Ted Lasso, T2, E5) [Episodio]. Apple TV+.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EVIDENCIA 17: TED LASSO - SUNFLOWERS -->
-    <div class="slide-container" id="slide-17">
-        <h2 class="slide-title">Ted Lasso: Sunflowers <span>Evidencia 17</span></h2>
-        <div class="series-layout">
-            <div class="analysis-column">
-                <div class="ficha-box">
-                    <table>
-                        <tr><th>Episodio Analizado</th><td>Sunflowers (T3E06)</td><th>Año / País</th><td>2023 / Estados Unidos - Reino Unido</td></tr>
-                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
-                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>63 minutos</td></tr>
-                    </table>
-                </div>
-                <div class="analysis-matrix">
-                    <div class="cuadro-analitico">
-                        <h4>2. Contextualización</h4>
-                        <p>2023. Fase final de la serie de Apple TV+. Representa la maduración de las series de autor de streaming que se permiten pausas de ritmo.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>3. Síntesis</h4>
-                        <p>Noche de asueto total en Ámsterdam. Cada personaje sigue una línea separada de introspección, libertad y redefinición identitaria personal.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>4. Análisis Narrativo</h4>
-                        <p>Conflicto puramente interno de reconciliación personal. Ritmo pausado y contemplativo. Uso expresivo de la atmósfera urbana holandesa.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>5. Clasificación McKee</h4>
-                        <p><strong>Amigos / Trabajo.</strong> La amistad sincera sustituye los linderos de la relación contractual laboral deportiva ordinaria.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>6. Vinculación Materia</h4>
-                        <p>Narrativas corales extendidas de streaming. Representa la autonomía estética que dedican las plataformas al desarrollo humano profundo de los arcos.</p>
-                    </div>
-                    <div class="cuadro-analitico">
-                        <h4>7. Reflexión Crítica</h4>
-                        <p>Mucho más humano y emocional que Rainbow. El escenario de Ámsterdam suspende la comedia futbolística para enfocarse en la vulnerabilidad, el crecimiento interno y el autodescubrimiento.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="visual-column">
-                <div class="image-wrapper">
-                    <img src="assets/images/ted-lasso-sunflowers.webp" alt="Amsterdam Sunflowers" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="fallback-img"><i class="fa-solid fa-seedling"></i><span>Sunflowers</span></div>
-                </div>
-                <div class="image-caption">Ámsterdam opera como un espacio de suspensión temporal e introspección afectiva coral.</div>
-                <div class="apa-footer">
-                    <strong>Referencia APA 7</strong>Hunt, B. (Escritor), & Lowney, D. (Director). (2023, 19 de abril). Sunflowers (Ted Lasso, T3, E6) [Episodio]. Apple TV+.
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- EVIDENCIA 18: 2 BROKE GIRLS -->
     <div class="slide-container" id="slide-18">
         <h2 class="slide-title">2 Broke Girls <span>Evidencia 18</span></h2>
@@ -1551,7 +1535,7 @@
             <div class="analysis-column">
                 <div class="ficha-box">
                     <table>
-                        <tr><th>Episodio Analizado</th><td>The Airport (T4E12)</td><th>Año / País</th><td>1992 / Estados Unidos</td></tr>
+                        <tr><th>Episodio Analizado</th><td>The Contest (T4E11)</td><th>Año / País</th><td>1992 / Estados Unidos</td></tr>
                         <tr><th>Creador(es)</th><td>Larry David y Jerry Seinfeld</td><th>Cadena / Plataforma</th><td>NBC</td></tr>
                         <tr><th>Género</th><td>Sitcom / comedia de amigos</td><th>Duración aprox.</th><td>22 minutos</td></tr>
                     </table>
@@ -1559,15 +1543,15 @@
                 <div class="analysis-matrix">
                     <div class="cuadro-analitico">
                         <h4>2. Contextualización</h4>
-                        <p>Sitcom clave de los noventa que convierte situaciones cotidianas en conflictos cómicos. Su estilo mezcla historias paralelas, egoísmo y caos compartido.</p>
+                        <p>Sitcom clave de los noventa que convirtió asuntos cotidianos e incluso tabú en comedia sofisticada. Este episodio es uno de los más citados por su ingenio verbal y su impacto cultural.</p>
                     </div>
                     <div class="cuadro-analitico">
                         <h4>3. Síntesis</h4>
-                        <p>Jerry viaja en primera clase mientras Elaine queda en turista; George y Kramer intentan recogerlos. La diferencia mínima de privilegio desencadena una comedia completa.</p>
+                        <p>Jerry, George, Elaine y Kramer hacen una apuesta para comprobar quién puede resistir más tiempo un impulso íntimo. La competencia vuelve cada escena más tensa, ridícula y reveladora.</p>
                     </div>
                     <div class="cuadro-analitico">
                         <h4>4. Análisis Narrativo</h4>
-                        <p>El episodio usa separación física y montaje paralelo para mostrar que el grupo sigue conectado por la misma lógica de egoísmo, malentendidos y falta de cooperación.</p>
+                        <p>El conflicto nace de una regla compartida y de la tentación individual de cada personaje. El capítulo usa elipsis, insinuación y repetición para sostener el humor sin decirlo todo de forma explícita.</p>
                     </div>
                     <div class="cuadro-analitico">
                         <h4>5. Clasificación McKee</h4>
@@ -1575,11 +1559,11 @@
                     </div>
                     <div class="cuadro-analitico">
                         <h4>6. Vinculación Materia</h4>
-                        <p>Sitcom clásica multicámara y comedia de tramas paralelas. También deja leer desigualdad, privilegio y egoísmo sin abandonar el tono ligero.</p>
+                        <p>Ejemplo claro de sitcom donde el diálogo y el subtexto reemplazan la explicación directa. También muestra cómo una serie de red podía empujar límites temáticos sin perder ligereza.</p>
                     </div>
                     <div class="cuadro-analitico">
                         <h4>7. Reflexión Crítica</h4>
-                        <p>Es brillante cómo algo tan pequeño como cambiar de asiento se vuelve un conflicto entero. La falta de empatía de Jerry sostiene la comedia con mucha claridad.</p>
+                        <p>Me parece brillante porque convierte una idea mínima en una competencia memorable. El episodio demuestra que la comedia puede ser muy efectiva cuando confía en la insinuación y en el ritmo del grupo.</p>
                     </div>
                 </div>
             </div>
@@ -1588,9 +1572,9 @@
                     <img src="assets/images/seinfeld.jpg" alt="Seinfeld airport contrast" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="fallback-img"><i class="fa-solid fa-plane"></i><span>Seinfeld</span></div>
                 </div>
-                <div class="image-caption">El contraste entre primera clase y turista convierte el privilegio mínimo en el centro del humor grupal.</div>
+                <div class="image-caption">La apuesta entre los cuatro personajes transforma un impulso privado en uno de los momentos más recordados de la comedia televisiva.</div>
                 <div class="apa-footer">
-                    <strong>Referencia APA 7</strong>Charles, L. (Escritor), & Cherones, T. (Director). (1992, 25 de noviembre). The Airport (Seinfeld, T4, E12) [Episodio]. NBC.
+                    <strong>Referencia APA 7</strong>David, L. (Escritor), & Cherones, T. (Director). (1992, 18 de noviembre). The Contest (Seinfeld, T4, E11) [Episodio]. NBC.
                 </div>
             </div>
         </div>
@@ -1654,6 +1638,110 @@
         <h2>Trabajo</h2>
         <p>Instituciones, oficio, creatividad y desgaste profesional como motores centrales del conflicto dramático</p>
         <div class="decorator"></div>
+    </div>
+
+    <!-- EVIDENCIA 16: TED LASSO - RAINBOW -->
+    <div class="slide-container" id="slide-16">
+        <h2 class="slide-title">Ted Lasso: Rainbow <span>Evidencia 16</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Rainbow (T2E05)</td><th>Año / País</th><td>2021 / Estados Unidos - Reino Unido</td></tr>
+                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
+                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>38 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Lanzada en pandemia, la serie se volvió un referente de la comedia optimista del streaming. Este episodio destaca por unir deporte, liderazgo y sentido de comunidad laboral.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Isaac busca recuperar confianza como capitán, mientras Roy Kent enfrenta la decisión de volver al club en un nuevo rol profesional.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>El conflicto gira alrededor del rol, la pertenencia y la utilidad dentro del equipo. La estructura convierte el regreso de Roy en el punto de resolución emocional y laboral.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo.</strong> Todo el episodio se organiza desde el club, el rendimiento, el liderazgo y la redefinición profesional de quienes trabajan dentro del equipo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Comedia dramática de streaming que flexibiliza arquetipos masculinos tradicionales y muestra cómo el espacio laboral también puede producir vínculos emocionales complejos.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Me gusta porque el deporte no aparece solo como espectáculo, sino como un espacio de trabajo donde el liderazgo, la confianza y el sentido de pertenencia cambian la vida de los personajes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="assets/images/ted-lasso-rainbow.jpg" alt="Roy Kent returns" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-medal"></i><span>Ted Lasso</span></div>
+                </div>
+                <div class="image-caption">El retorno de Roy Kent al club confirma que el trabajo también puede ser un espacio de identidad y propósito.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Wrubel, B. (Escritor), & Dunton, E. (Directora). (2021, 20 de agosto). Rainbow (Ted Lasso, T2, E5) [Episodio]. Apple TV+.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCIA 17: TED LASSO - SUNFLOWERS -->
+    <div class="slide-container" id="slide-17">
+        <h2 class="slide-title">Ted Lasso: Sunflowers <span>Evidencia 17</span></h2>
+        <div class="series-layout">
+            <div class="analysis-column">
+                <div class="ficha-box">
+                    <table>
+                        <tr><th>Episodio Analizado</th><td>Sunflowers (T3E06)</td><th>Año / País</th><td>2023 / Estados Unidos - Reino Unido</td></tr>
+                        <tr><th>Creador(es)</th><td>J. Sudeikis, B. Lawrence, B. Hunt</td><th>Cadena / Plataforma</th><td>Apple TV+</td></tr>
+                        <tr><th>Género</th><td>Comedia dramática</td><th>Duración aprox.</th><td>63 minutos</td></tr>
+                    </table>
+                </div>
+                <div class="analysis-matrix">
+                    <div class="cuadro-analitico">
+                        <h4>2. Contextualización</h4>
+                        <p>Forma parte de la etapa madura de la serie y demuestra que una producción deportiva puede detenerse para explorar el cansancio, la libertad y la introspección de su equipo de trabajo.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>3. Síntesis</h4>
+                        <p>Durante una noche libre en Ámsterdam, cada integrante del equipo vive una experiencia distinta que lo ayuda a replantear deseos, miedos y decisiones personales.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>4. Análisis Narrativo</h4>
+                        <p>El capítulo desacelera la trama principal para mostrar conflictos internos. Aunque parece una pausa, fortalece la continuidad emocional del grupo y del entorno profesional.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>5. Clasificación McKee</h4>
+                        <p><strong>Trabajo.</strong> El viaje existe porque forma parte de la dinámica del club y del desgaste que implica convivir, competir y sostener responsabilidades profesionales.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>6. Vinculación Materia</h4>
+                        <p>Muestra una narrativa coral de streaming donde el espacio, la atmósfera y el ritmo lento sirven para profundizar personajes sin abandonar el mundo laboral que los reúne.</p>
+                    </div>
+                    <div class="cuadro-analitico">
+                        <h4>7. Reflexión Crítica</h4>
+                        <p>Me gusta mucho porque demuestra que una historia de trabajo no siempre necesita crisis directas: también puede crecer desde momentos de pausa, cuidado y redescubrimiento personal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="visual-column">
+                <div class="image-wrapper">
+                    <img src="assets/images/ted-lasso-sunflowers.webp" alt="Amsterdam Sunflowers" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="fallback-img"><i class="fa-solid fa-seedling"></i><span>Sunflowers</span></div>
+                </div>
+                <div class="image-caption">Ámsterdam funciona como una pausa emocional dentro del trabajo colectivo del equipo.</div>
+                <div class="apa-footer">
+                    <strong>Referencia APA 7</strong>Hunt, B. (Escritor), & Lowney, D. (Director). (2023, 19 de abril). Sunflowers (Ted Lasso, T3, E6) [Episodio]. Apple TV+.
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- EVIDENCIA 22: ER -->
@@ -2104,8 +2192,8 @@
     <div class="slide-container essay-slide" id="slide-conclusion">
         <h2>Conclusión del portafolio</h2>
         <div class="essay-content">
-            <p>Este portafolio permitió analizar cómo las series han evolucionado en sus formas de narrar, desde las sitcoms clásicas hasta las producciones actuales de streaming. A lo largo de los episodios se identificaron cambios en la estructura, el uso del cliffhanger, la construcción de personajes, la tecnología, el montaje, el sonido y la estética visual. También se pudo observar que temas como familia, amistad, trabajo, poder y violencia siguen presentes, pero se representan de formas distintas según la época y el formato de cada serie.</p>
-            <p>En conjunto, las series muestran que la televisión no solo busca entretener, sino también reflejar conflictos sociales, emocionales y culturales. Algunas utilizan la comedia para hablar de relaciones cotidianas, mientras otras construyen tensión desde el suspenso, la política, el trabajo o la psicología. El análisis permitió entender que cada decisión audiovisual, desde una toma hasta un silencio o un final abierto, influye en la experiencia del espectador.</p>
+            <p>Este portafolio permitió analizar cómo las series han evolucionado en sus formas de narrar, desde las sitcoms clásicas hasta las producciones actuales de streaming. A lo largo de los bloques se identificaron cambios en la estructura, el uso del cliffhanger, la construcción de personajes, el montaje, el sonido, la tecnología y la estética visual. También se hizo visible que temas como familia, amistad, trabajo, poder y violencia siguen presentes, pero se representan de manera distinta según la época, la industria y el formato de cada serie.</p>
+            <p>En conjunto, las evidencias muestran que la televisión no solo busca entretener, sino también reflejar conflictos sociales, emocionales y culturales. Algunas series construyen humor desde lo cotidiano; otras trabajan la tensión desde la política, el suspenso, la psicología o el entorno laboral. El análisis me permitió relacionar los bloques entre sí y entender que cada decisión audiovisual, desde una toma hasta un silencio o un final abierto, modifica la forma en que el espectador interpreta la historia y se involucra con ella.</p>
         </div>
     </div>
 
@@ -2113,20 +2201,38 @@
     <div class="slide-container essay-slide" id="slide-cierre">
         <h2>Reflexión personal sobre la materia</h2>
         <div class="essay-content">
-            <p>La materia me gustó porque me hizo ver las series de una forma diferente. Antes las veía más como entretenimiento, pero ahora puedo identificar cuándo una escena usa el diálogo, el montaje, la música, la cámara o el espacio para generar una emoción. También me ayudó a entender por qué algunas series conectan más conmigo que otras, aunque todas tengan algo importante que aportar dentro de la evolución televisiva.</p>
-            <p>Las series que más me gustaron fueron <i>It’s All Her Fault</i>, <i>The Newsroom</i>, <i>This Is Us</i>, <i>Malcolm in the Middle</i>, <i>The Bear</i> y <i>Bluey</i>, porque lograron atraparme desde la tensión, la emoción o la nostalgia. Me gustaría seguir viendo <i>It’s All Her Fault</i> para saber qué ocurrió con el niño, <i>This Is Us</i> porque conecté con la historia de la familia Pearson y <i>The Bear</i> porque me gustó mucho la transformación de Richie. En general, me quedo con la idea de que una buena serie puede hacerte reír, incomodar o emocionarte, pero también hacerte pensar en las personas y en la época que representa.</p>
+            <p>La materia me gustó porque me hizo ver las series de una forma diferente. Antes las veía más como entretenimiento, pero ahora puedo identificar mejor cuándo una escena usa el diálogo, el montaje, la música, la cámara o el espacio para generar una emoción o para construir un conflicto. También me ayudó a entender por qué algunas series conectan más conmigo que otras, aunque todas tengan algo importante que aportar dentro de la evolución de la televisión.</p>
+            <p>Las series que más me gustaron fueron <i>It’s All Her Fault</i>, <i>The Newsroom</i>, <i>This Is Us</i>, <i>Malcolm in the Middle</i>, <i>The Bear</i> y <i>Bluey</i>, porque me atraparon desde la tensión, la emoción o la nostalgia, y además me dejaron ver con más claridad cómo una serie puede construir sentido desde sus personajes y sus recursos audiovisuales. Me gustaría seguir viendo <i>It’s All Her Fault</i> para saber qué ocurrió con el niño, <i>This Is Us</i> porque conecté mucho con la historia de la familia Pearson y <i>The Bear</i> porque me gustó mucho la transformación de Richie. Al final me quedo con la idea de que una buena serie puede hacerte reír, incomodar o emocionarte, pero también hacerte pensar en las personas, en los conflictos de su tiempo y en la forma en que se cuentan esas experiencias.</p>
         </div>
         <p style="margin-top: 50px; font-weight: 700; color: #0f172a; letter-spacing: 2px; font-size: 12px;">FIN DE LA EVALUACIÓN</p>
     </div>
 
-    <!-- REFLEXIÓN PERSONAL ANTERIOR -->
-    <div class="slide-container essay-slide legacy-closeout" id="slide-cierre-old">
-        <h2 style="color: #b8925e; font-size: 38px; margin-bottom: 20px;">Reflexión Final del Portafolio</h2>
-        <div class="essay-content">
-            <p style="font-size: 16px; margin: 0 0 15px 0;">Al terminar este portafolio entendí que las series no solo cambian por la época, sino por la forma en que cuentan conflictos y construyen emociones. Desde las sitcoms clásicas hasta las series actuales de streaming, se nota una evolución en el uso de la cámara, el montaje, la música, los diálogos y la estructura narrativa. Algunas historias se apoyan en el humor, otras en el suspenso o el drama, pero todas muestran algo sobre la familia, la amistad, el trabajo, el poder o la manera en que vivimos.</p>
-            <p style="font-size: 16px; margin: 0;">También me di cuenta de que una serie puede ser importante aunque no sea de mi gusto personal. Hubo episodios que me atraparon mucho por su tensión o emoción, como <i>This Is Us</i>, <i>The Bear</i>, <i>Mindhunter</i> o <i>It’s All Her Fault</i>, y otros que no conectaron tanto conmigo, pero que ayudaron a entender formatos más clásicos o estilos de comedia diferentes. Lo más interesante fue ver que las series pueden reflejar su tiempo: muestran cambios en la sociedad, en la tecnología, en las relaciones y en la forma de representar a los personajes. Al final, este portafolio me permitió ver la televisión no solo como entretenimiento, sino como una forma de contar y analizar experiencias humanas.</p>
+    <!-- FUENTES CONSULTADAS -->
+    <div class="slide-container sources-slide" id="slide-fuentes">
+        <h2>Fuentes consultadas</h2>
+        <div class="sources-grid">
+            <div class="sources-card">
+                <h3>Referencias de series y episodios</h3>
+                <ul>
+                    <li>Las referencias APA 7 de cada evidencia se colocaron dentro de la lámina correspondiente para mantener identificable cada episodio analizado.</li>
+                    <li>Para verificar temporadas, capítulos, sinopsis y datos básicos se consultaron páginas oficiales o catálogos de plataforma como NBC, Netflix, Apple TV+, FX, Max, Peacock y CBS.</li>
+                    <li>En títulos clásicos y catálogos históricos también se contrastó la información con guías de episodios y fichas de emisión ampliamente usadas en investigación televisiva.</li>
+                </ul>
+            </div>
+            <div class="sources-card">
+                <h3>Créditos de imágenes</h3>
+                <ul>
+                    <li><strong>NBC / NBCUniversal:</strong> The West Wing, ER y Law &amp; Order: SVU a partir de material promocional y páginas oficiales de la cadena.</li>
+                    <li><strong>Netflix / Tudum:</strong> House of Cards, Mindhunter, Adolescence y Black Mirror mediante arte promocional, stills y materiales editoriales oficiales.</li>
+                    <li><strong>Apple TV+ / Apple TV Press:</strong> Ted Lasso y Shrinking con imágenes promocionales y unit photography de prensa.</li>
+                    <li><strong>FX / Hulu:</strong> The Bear con material promocional oficial de la serie.</li>
+                    <li><strong>HBO Max:</strong> The Pitt con póster e imagen promocional oficial.</li>
+                    <li><strong>Peacock / NBC Insider:</strong> It’s All Her Fault mediante tráiler oficial, materiales promocionales y ficha de reparto.</li>
+                    <li><strong>CBS, ABC, Disney, BBC Studios y archivos promocionales:</strong> Friends, How I Met Your Mother, 2 Broke Girls, I Love Lucy, The Dick Van Dyke Show, Seinfeld, Malcolm in the Middle, Married... with Children, Arrested Development, Bluey y otros títulos de catálogo o difusión televisiva.</li>
+                </ul>
+            </div>
         </div>
-        <p style="margin-top: 50px; font-weight: 700; color: #0f172a; letter-spacing: 2px; font-size: 12px;">FIN DE LA EVALUACIÓN</p>
+        <p class="sources-note">Crédito general: todas las imágenes se usan con fines exclusivamente académicos y de análisis audiovisual dentro de este portafolio universitario. Cuando no existió ficha editorial específica por episodio en el material disponible, se acreditó a la plataforma, cadena o estudio responsable de la difusión promocional de la serie.</p>
     </div>
 
 </div>
@@ -2145,6 +2251,51 @@
         'slide-15': '“Sleepytime” convierte una situación sencilla, como dormir sola por primera vez, en una historia sobre crecimiento e independencia. Bingo quiere demostrar que puede pasar la noche en su propia cama, pero su sueño revela que todavía necesita sentirse protegida por su familia. El espacio exterior y el peluche Floppy funcionan como metáforas visuales. Mientras Bingo viaja por el universo, en la vida real sus padres intentan descansar y cuidar a sus hijas. El contraste entre el sueño y la rutina familiar permite que el episodio sea tierno, divertido y emocional al mismo tiempo.',
         'slide-16': 'El episodio reúne varios conflictos relacionados con la confianza y la necesidad de pertenecer. Isaac pierde seguridad como capitán, Nate quiere sentirse respetado, Rebecca empieza a abrirse emocionalmente y Roy no sabe cuál es su lugar después de retirarse del futbol. El regreso de Roy al AFC Richmond funciona como el momento más importante del capítulo. No representa solo la llegada de un nuevo entrenador, sino que muestra que Roy encuentra una nueva forma de seguir perteneciendo al mundo del futbol. El episodio confirma que el club funciona como una comunidad donde los problemas de una persona afectan a todo el grupo.'
     };
+
+    const fichaMetadataBySlide = {
+        'slide-01': { years: '1999-2006', seasons: '7', rating: 'TV-14', cast: 'Martin Sheen, Allison Janney, Rob Lowe y Bradley Whitford' },
+        'slide-02': { years: '2013-2018', seasons: '6', rating: 'TV-MA', cast: 'Kevin Spacey, Robin Wright, Michael Kelly y Kate Mara' },
+        'slide-03': { years: '2025', seasons: '1', rating: 'TV-MA', cast: 'Sarah Snook, Dakota Fanning, Jake Lacy y Michael Peña' },
+        'slide-04': { years: '2012-2014', seasons: '3', rating: 'TV-MA', cast: 'Jeff Daniels, Emily Mortimer, Sam Waterston y Olivia Munn' },
+        'slide-05': { years: '1951-1957', seasons: '6', rating: 'TV-G', cast: 'Lucille Ball, Desi Arnaz, Vivian Vance y William Frawley' },
+        'slide-06': { years: '1961-1966', seasons: '5', rating: 'TV-G', cast: 'Dick Van Dyke, Mary Tyler Moore, Rose Marie y Morey Amsterdam' },
+        'slide-07': { years: '1959-1963', seasons: '4', rating: 'TV-PG', cast: 'Robert Stack, Abel Fernandez y Nicholas Georgiade' },
+        'slide-08': { years: '1959-1964', seasons: '5', rating: 'TV-PG', cast: 'Rod Serling, Donna Douglas, Maxine Stuart y William D. Gordon' },
+        'slide-09': { years: '1994-2004', seasons: '10', rating: 'TV-14', cast: 'Jennifer Aniston, Courteney Cox, Lisa Kudrow y Matt LeBlanc' },
+        'slide-10': { years: '2009-2020', seasons: '11', rating: 'TV-PG', cast: 'Ed O’Neill, Sofia Vergara, Julie Bowen y Ty Burrell' },
+        'slide-11': { years: '2016-2022', seasons: '6', rating: 'TV-14', cast: 'Milo Ventimiglia, Mandy Moore, Sterling K. Brown y Chrissy Metz' },
+        'slide-12': { years: '2000-2006', seasons: '7', rating: 'TV-PG', cast: 'Frankie Muniz, Jane Kaczmarek, Bryan Cranston y Justin Berfield' },
+        'slide-13': { years: '1987-1997', seasons: '11', rating: 'TV-14', cast: 'Ed O’Neill, Katey Sagal, Christina Applegate y David Faustino' },
+        'slide-14': { years: '2003-2019', seasons: '5', rating: 'TV-14', cast: 'Jason Bateman, Michael Cera, Portia de Rossi y Will Arnett' },
+        'slide-15': { years: '2018-presente', seasons: '3', rating: 'TV-Y', cast: 'David McCormack, Melanie Zanetti y el elenco de voz de Bluey y Bingo' },
+        'slide-16': { years: '2020-presente', seasons: '4', rating: 'TV-MA', cast: 'Jason Sudeikis, Hannah Waddingham, Brett Goldstein y Juno Temple' },
+        'slide-17': { years: '2020-presente', seasons: '4', rating: 'TV-MA', cast: 'Jason Sudeikis, Hannah Waddingham, Brett Goldstein y Juno Temple' },
+        'slide-18': { years: '2011-2017', seasons: '6', rating: 'TV-14', cast: 'Kat Dennings, Beth Behrs, Garrett Morris y Jonathan Kite' },
+        'slide-19': { years: '2023-presente', seasons: '3', rating: 'TV-MA', cast: 'Jason Segel, Jessica Williams, Harrison Ford y Christa Miller' },
+        'slide-20': { years: '1989-1998', seasons: '9', rating: 'TV-PG', cast: 'Jerry Seinfeld, Julia Louis-Dreyfus, Jason Alexander y Michael Richards' },
+        'slide-21': { years: '2005-2014', seasons: '9', rating: 'TV-14', cast: 'Josh Radnor, Jason Segel, Cobie Smulders y Neil Patrick Harris' },
+        'slide-22': { years: '1994-2009', seasons: '15', rating: 'TV-14', cast: 'Anthony Edwards, Noah Wyle, Julianna Margulies y Eriq La Salle' },
+        'slide-23': { years: '2025-presente', seasons: '2', rating: 'TV-MA', cast: 'Noah Wyle, Tracy Ifeachor, Patrick Ball y Katherine LaNasa' },
+        'slide-24': { years: '2017-2019', seasons: '2', rating: 'TV-MA', cast: 'Jonathan Groff, Holt McCallany, Anna Torv y Cotter Smith' },
+        'slide-25': { years: '1999-presente', seasons: '27+', rating: 'TV-14', cast: 'Mariska Hargitay, Ice-T, Kelli Giddish y Peter Scanavino' },
+        'slide-26': { years: '2007-2015', seasons: '7', rating: 'TV-MA', cast: 'Jon Hamm, Elisabeth Moss, Vincent Kartheiser y January Jones' },
+        'slide-27': { years: '2022-2026', seasons: '5', rating: 'TV-MA', cast: 'Jeremy Allen White, Ayo Edebiri, Ebon Moss-Bachrach y Lionel Boyce' },
+        'slide-28': { years: '2025', seasons: '1', rating: 'TV-MA', cast: 'Owen Cooper, Erin Doherty, Stephen Graham y Ashley Walters' },
+        'slide-29': { years: '2011-presente', seasons: '7', rating: 'TV-MA', cast: 'Bryce Dallas Howard, Alice Eve, Cherry Jones y James Norton' }
+    };
+
+    Object.entries(fichaMetadataBySlide).forEach(([slideId, data]) => {
+        const table = document.querySelector(`#${slideId} .ficha-box table`);
+        if (!table || table.dataset.enhanced === 'true') return;
+
+        const rows = `
+            <tr><th>Años de emisión</th><td>${data.years}</td><th>Temporadas</th><td>${data.seasons}</td></tr>
+            <tr><th>Clasificación</th><td>${data.rating}</td><th>Reparto principal</th><td>${data.cast}</td></tr>
+        `;
+
+        table.insertAdjacentHTML('beforeend', rows);
+        table.dataset.enhanced = 'true';
+    });
 
     Object.entries(complementaryDataBySlide).forEach(([slideId, text]) => {
         const slide = document.getElementById(slideId);
