@@ -47,6 +47,16 @@
             color: #1e293b;
             scroll-margin-top: 20px;
         }
+        .slide-page-number {
+            position: absolute;
+            right: 24px;
+            bottom: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #94a3b8;
+        }
 
         .slide-container::before {
             content: "";
@@ -2240,6 +2250,60 @@
 </div>
 
 <script>
+    const pageNumberBySlide = {
+        'slide-inicio': '1',
+        'slide-introduccion': '2',
+        'slide-indice': '3',
+        'bloque-1': '4',
+        'slide-01': '5',
+        'slide-02': '6',
+        'slide-03': '7',
+        'slide-04': '8',
+        'bloque-2': '9',
+        'slide-05': '10',
+        'slide-06': '11',
+        'slide-07': '12',
+        'slide-08': '13',
+        'bloque-3': '14',
+        'slide-09': '15',
+        'slide-10': '16',
+        'slide-11': '17',
+        'slide-12': '18',
+        'slide-13': '19',
+        'slide-14': '20',
+        'slide-15': '21',
+        'bloque-4': '22',
+        'slide-18': '23',
+        'slide-19': '24',
+        'slide-20': '25',
+        'slide-21': '26',
+        'bloque-5': '27',
+        'slide-16': '28',
+        'slide-17': '29',
+        'slide-22': '30',
+        'slide-23': '31',
+        'slide-24': '32',
+        'slide-25': '33',
+        'slide-26': '34',
+        'slide-27': '35',
+        'bloque-6': '36',
+        'slide-28': '37',
+        'slide-29': '38',
+        'slide-conclusion': '39',
+        'slide-cierre': '40',
+        'slide-fuentes': '41'
+    };
+
+    Object.entries(pageNumberBySlide).forEach(([slideId, pageNumber]) => {
+        const slide = document.getElementById(slideId);
+        if (!slide || slide.querySelector('.slide-page-number')) return;
+
+        const page = document.createElement('div');
+        page.className = 'slide-page-number';
+        page.textContent = pageNumber;
+        slide.appendChild(page);
+    });
+
     const complementaryDataBySlide = {
         'slide-01': 'El fragmento construye tensión sin necesitar acción física. Todo inicia de manera calmada, pero la incomodidad del presidente frente a la postura de Jenna Jacobs va creciendo mediante el diálogo, las pausas y las miradas de los asistentes. La escena demuestra que el conflicto político también puede desarrollarse desde una discusión moral y religiosa. Bartlet utiliza el conocimiento y el sarcasmo como herramientas de poder. Al responder con contradicciones de la Biblia, no solo cuestiona a Jenna Jacobs, sino que toma control de toda la sala. El momento presenta al presidente como una figura capaz de imponerse desde la inteligencia y no desde la fuerza.',
         'slide-02': 'La escena muestra que el poder político puede comunicarse sin explicaciones directas. El vicepresidente no necesita decir que está perdiendo importancia; se entiende por su ubicación en el evento, la distancia con el presidente y la atención que reciben otros personajes. La puesta en escena convierte el espacio físico en una forma de jerarquía. El ritmo lento ayuda a que cada gesto tenga peso. La colocación de los nombres, la fotografía, las plumas y los saludos funcionan como detalles que revelan quién está dentro o fuera del centro político. Esto hace que la escena tenga un tono frío, calculado y manipulador.',
